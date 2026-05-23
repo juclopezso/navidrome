@@ -45,7 +45,36 @@ services:
     profiles:
       - test
 
+  playwright-level3:
+    image: node:24
+    working_dir: /app
+    volumes:
+      - ./ui:/app
+      - node-modules:/app/node_modules
+      - playwright-cache:/root/.cache/ms-playwright
+    environment:
+      BASE_URL: http://frontend:4533
+      BACKEND_URL: http://backend:4633
+    # Wait for both services to accept connections before running tests.
+    command: >
+      sh -c "
+        npm ci &&
+        npx playwright install --with-deps chromium &&
+        echo 'Waiting for backend...' &&
+        until wget -qO- http://backend:4633/ping >/dev/null 2>&1; do sleep 2; done &&
+        echo 'Waiting for frontend...' &&
+        until wget -qO- http://frontend:4533 >/dev/null 2>&1; do sleep 2; done &&
+        echo 'Services ready. Running Level 3 E2E tests...' &&
+        npm run test:e2e:level3
+      "
+    depends_on:
+      - backend
+      - frontend
+    profiles:
+      - level3-e2e
+
 volumes:
   go-mod-cache:
   go-build-cache:
   node-modules:
+  playwright-cache:
