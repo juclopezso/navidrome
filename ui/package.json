@@ -9,6 +9,8 @@
     "test:watch": "vitest",
     "test": "vitest --watch=false",
     "test:coverage": "vitest run --coverage --watch=false",
+    "test:integration": "vitest --config vitest.integration.config.js --watch=false",
+    "test:e2e": "playwright test",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
     "prettier": "prettier --write ./src",
@@ -79,7 +81,8 @@
     "typescript": "^5.8.3",
     "vite": "^7.3.2",
     "vite-plugin-pwa": "^1.1.0",
-    "vitest": "^4.0.3"
+    "vitest": "^4.0.3",
+    "@playwright/test": "^1.52.0"
   },
   "overrides": {
     "vite": {

@@ -45,7 +45,65 @@ services:
     profiles:
       - test
 
+  frontend-backend-integration-test:
+    image: node:24
+    working_dir: /app
+    volumes:
+      - ./ui:/app
+      - node-modules:/app/node_modules
+    environment:
+      BACKEND_URL: http://backend:4633
+      ADMIN_USER: admin
+      ADMIN_PASS: admin
+    # Wait for the backend HTTP server to respond before running tests.
+    # /rest/ping returns 200 even without auth params (Subsonic error JSON),
+    # which is enough to confirm the server is accepting connections.
+    command: >
+      sh -c "
+        npm ci &&
+        echo 'Waiting for backend...' &&
+        until curl -sf http://backend:4633/rest/ping > /dev/null 2>&1; do
+          sleep 2
+        done &&
+        echo 'Backend is ready.' &&
+        npm run test:integration
+      "
+    depends_on:
+      - backend
+    profiles:
+      - integration-test
+
+  playwright-test:
+    # Official Playwright image — browsers (Chromium, Firefox, WebKit) pre-installed.
+    image: mcr.microsoft.com/playwright:v1.52.0-noble
+    working_dir: /app
+    volumes:
+      - ./ui:/app
+      - playwright-node-modules:/app/node_modules
+    environment:
+      BASE_URL: http://frontend:4533
+      BACKEND_URL: http://backend:4633
+      ADMIN_USER: admin
+      ADMIN_PASS: admin
+    # Wait for both backend and frontend before running browser tests.
+    command: >
+      sh -c "
+        npm ci &&
+        echo 'Waiting for backend...' &&
+        until curl -sf http://backend:4633/rest/ping > /dev/null 2>&1; do sleep 2; done &&
+        echo 'Waiting for frontend...' &&
+        until curl -sf http://frontend:4533 > /dev/null 2>&1; do sleep 2; done &&
+        echo 'Stack is ready. Running Playwright tests...' &&
+        npm run test:e2e
+      "
+    depends_on:
+      - frontend
+      - backend
+    profiles:
+      - playwright-test
+
 volumes:
   go-mod-cache:
   go-build-cache:
   node-modules:
+  playwright-node-modules:

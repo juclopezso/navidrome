@@ -59,6 +59,8 @@ export const LoveButton = ({
       size={'small'}
       disabled={disabled || loading || record.missing}
       className={clsx(classes.love, className)}
+      data-testid="love-button"
+      data-starred={record.starred ? 'true' : 'false'}
       title={
         isDateSet(record.starredAt)
           ? new Date(record.starredAt).toLocaleString()
