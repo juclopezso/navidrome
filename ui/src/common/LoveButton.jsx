@@ -64,6 +64,9 @@ export const LoveButton = ({
           ? new Date(record.starredAt).toLocaleString()
           : undefined
       }
+      data-testid="love-button"
+      data-record-id={record.mediaFileId || record.id}
+      data-starred={record.starred ? 'true' : 'false'}
       {...rest}
     >
       {record.starred ? (
