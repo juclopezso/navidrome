@@ -8,6 +8,7 @@
     "serve": "vite preview",
     "test:watch": "vitest",
     "test": "vitest --watch=false",
+    "test:e2e": "playwright test",
     "test:coverage": "vitest run --coverage --watch=false",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -79,7 +80,8 @@
     "typescript": "^5.8.3",
     "vite": "^7.3.2",
     "vite-plugin-pwa": "^1.1.0",
-    "vitest": "^4.0.3"
+    "vitest": "^4.0.3",
+    "@playwright/test": "^1.48.0"
   },
   "overrides": {
     "vite": {

@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <testsuites tests="310" disabled="303" errors="0" failures="0" time="0.965819187">
+      <testsuite name="Subsonic API E2E Suite" package="/workspace" tests="310" disabled="0" skipped="303" errors="0" failures="0" time="0.965819187" timestamp="2026-05-23T01:54:01">
+          <properties>
+              <property name="SuiteSucceeded" value="true"></property>
+              <property name="SuiteHasProgrammaticFocus" value="false"></property>
+              <property name="SpecialSuiteFailureReason" value=""></property>
+              <property name="SuiteLabels" value="[]"></property>
+              <property name="SuiteSemVerConstraints" value="[]"></property>
+              <property name="SuiteComponentSemVerConstraints" value="[]"></property>
+              <property name="RandomSeed" value="1779501241"></property>
+              <property name="RandomizeAllSpecs" value="false"></property>
+              <property name="LabelFilter" value=""></property>
+              <property name="SemVerFilter" value=""></property>
+              <property name="FocusStrings" value="Unfavorite"></property>
+              <property name="SkipStrings" value=""></property>
+              <property name="FocusFiles" value=""></property>
+              <property name="SkipFiles" value=""></property>
+              <property name="FailOnPending" value="false"></property>
+              <property name="FailOnEmpty" value="false"></property>
+              <property name="FailFast" value="false"></property>
+              <property name="FlakeAttempts" value="0"></property>
+              <property name="DryRun" value="false"></property>
+              <property name="ParallelTotal" value="1"></property>
+              <property name="OutputInterceptorMode" value=""></property>
+          </properties>
+          <testcase name="[BeforeSuite]" classname="Subsonic API E2E Suite" status="passed" time="0.917543491">
+              <system-err>&gt; Enter [BeforeSuite] TOP-LEVEL - /workspace/server/e2e/e2e_suite_test.go:402 @ 05/23/26 01:54:01.662&#xA;&lt; Exit [BeforeSuite] TOP-LEVEL - /workspace/server/e2e/e2e_suite_test.go:402 @ 05/23/26 01:54:02.58 (918ms)&#xA;</system-err>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints getShares returns empty initially" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints createShare creates a share for an album" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints getShares returns the created share" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints updateShare modifies the description" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints deleteShare removes it" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints getShares returns empty after deletion" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints createShare works with a song ID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints createShare returns error when id parameter is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints updateShare returns error when id parameter is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sharing Endpoints deleteShare returns error when id parameter is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints getPlaylists returns empty list initially" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints createPlaylist creates a new playlist with songs" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints getPlaylist returns playlist with tracks in order" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints createPlaylist without name or playlistId returns error" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints createPlaylist with playlistId replaces tracks on existing playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can rename the playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can set comment" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can set public visibility" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can add songs" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can add multiple songs at once" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can remove songs by index and verifies correct songs remain" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can remove and add songs in a single call" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can combine metadata change with track removal" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can remove all songs from playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist can add songs to an empty playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints updatePlaylist without playlistId returns error" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints getPlaylists shows the playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints deletePlaylist removes the playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints getPlaylist on deleted playlist returns error" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints getPlaylists returns empty after deletion" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions admin creates a private playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions admin creates a public playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user creates a playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user cannot see admin&#39;s private playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user cannot update admin&#39;s private playlist (not found)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user cannot delete admin&#39;s private playlist (not found)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user can see admin&#39;s public playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user cannot update admin&#39;s public playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user cannot add songs to admin&#39;s public playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user cannot remove songs from admin&#39;s public playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user cannot delete admin&#39;s public playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user cannot replace tracks on admin&#39;s public playlist via createPlaylist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user can update their own playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user can add songs to their own playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions regular user can delete their own playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions admin can update any user&#39;s playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions admin can delete any user&#39;s playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions admin&#39;s private playlist is unchanged after failed regular user operations" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Playlist Permissions admin&#39;s public playlist is unchanged after failed regular user operations" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Protection getPlaylist returns smart playlist with readonly flag and validUntil" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Protection createPlaylist rejects replacing tracks on smart playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Protection updatePlaylist rejects adding songs to smart playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Protection updatePlaylist rejects removing songs from smart playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Protection updatePlaylist allows renaming smart playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Protection updatePlaylist allows setting comment on smart playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Protection deletePlaylist can delete smart playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Boolean String Normalization (issue #4826) smart playlist with bool loved=true returns starred song" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Boolean String Normalization (issue #4826) smart playlist with string loved=&#39;true&#39; returns same results as bool (issue #4826)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Boolean String Normalization (issue #4826) nested any group with string loved=&#39;true&#39; returns starred song (issue #4826)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Boolean String Normalization (issue #4826) isPresent with string &#39;true&#39; matches songs that have the tag" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Boolean String Normalization (issue #4826) isMissing with string &#39;true&#39; excludes songs that have the tag" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Playlist Endpoints Smart Playlist Boolean String Normalization (issue #4826) isMissing with string &#39;true&#39; returns same results as bool true" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList type=newest returns albums sorted by creation date" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList type=alphabeticalByName sorts albums by name" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList type=alphabeticalByArtist sorts albums by artist name" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList type=random returns albums" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList type=byGenre filters by genre parameter" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList type=byYear filters by fromYear/toYear range" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList respects size parameter" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList supports offset for pagination" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList returns error when type parameter is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList returns error for unknown type" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList type=frequent returns empty when no albums have been played" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList type=recent returns empty when no albums have been played" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList - starred type type=starred returns only starred albums" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList - highest type type=highest returns only rated albums" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList2 returns albums in AlbumID3 format" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetAlbumList2 type=newest works correctly" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetStarred returns empty lists when nothing is starred" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetStarred2 returns empty lists when nothing is starred" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetNowPlaying returns empty list when nobody is playing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetRandomSongs returns random songs from library" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetRandomSongs respects size parameter" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetRandomSongs filters by genre when specified" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetSongsByGenre returns songs matching the genre" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetSongsByGenre supports count and offset parameters" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Album List Endpoints GetSongsByGenre returns empty for non-existent genre" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-User Isolation Admin-only endpoint restrictions startScan fails for regular user" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-User Isolation Browsing as regular user regular user can browse the library" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-User Isolation Browsing as regular user regular user can search" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-User Isolation getUser authorization regular user can get their own info" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-User Isolation getUser authorization regular user cannot get another user&#39;s info" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-User Isolation getUsers for regular user returns only the requesting user&#39;s info" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints without sonic similarity plugin getSonicSimilarTracks returns 404 when no sonic similarity plugin is available" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints without sonic similarity plugin findSonicPath returns 404 when no sonic similarity plugin is available" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin getSonicSimilarTracks returns similar tracks with similarity scores" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin getSonicSimilarTracks respects the count parameter" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin getSonicSimilarTracks returns an error for a missing id parameter" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin getSonicSimilarTracks returns an error for a non-existent song ID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin getSonicSimilarTracks returns correct JSON structure" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin findSonicPath returns a path between two tracks with similarity scores" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin findSonicPath returns an error for a missing startSongId parameter" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin findSonicPath returns an error for a missing endSongId parameter" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin findSonicPath returns an error for a non-existent start song ID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Sonic Similarity Endpoints with sonic similarity plugin findSonicPath returns an error for a non-existent end song ID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search2 finds artists by name" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search2 finds albums by name" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search2 finds songs by title" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search2 respects artistCount/albumCount/songCount limits" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search2 supports offset parameters" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search2 returns empty results for non-matching query" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 returns results in ID3 format" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 returns all results when query is empty (OpenSubsonic)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 finds across all entity types simultaneously" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 MBID search finds songs by mbz_recording_id" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 MBID search finds songs by mbz_release_track_id" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 MBID search finds albums by mbz_album_id" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 MBID search finds albums by mbz_release_group_id" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 MBID search finds artists by mbz_artist_id" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 MBID search returns empty results for non-matching UUID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 MBID search does not return songs for artist MBID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 CJK search finds songs by CJK title" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 CJK search finds artists by CJK name" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 CJK search finds albums by CJK artist name" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Search Endpoints Search3 Legacy backend returns results using legacy LIKE-based search when configured" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) raw / direct play streams raw when no format or maxBitRate is specified" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) raw / direct play streams raw when format=raw is explicitly requested" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) raw / direct play streams raw when maxBitRate is &gt;= source bitrate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) raw / direct play streams raw when format matches source and bitrate is not lower" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) transcoding with explicit format transcodes to mp3 when format=mp3 is requested" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) transcoding with explicit format transcodes to opus when format=opus is requested (no maxBitRate)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) transcoding with explicit format transcodes to opus with specified maxBitRate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) transcoding with explicit format transcodes to mp3 with specified maxBitRate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) transcoding with explicit format transcodes MP3 to opus when format=opus is requested" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) transcoding with explicit format transcodes same format when maxBitRate is lower than source" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) transcoding with explicit format clamps multichannel FLAC to 2 channels when transcoding to mp3 (#5336)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) downsampling with maxBitRate only transcodes using default downsampling format when maxBitRate &lt; source bitrate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) downsampling with maxBitRate only streams raw when maxBitRate &gt;= source bitrate (no downsampling needed)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) timeOffset passes timeOffset to the stream request" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) stream creation failure returns a Subsonic error for stream endpoint" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) stream creation failure returns a Subsonic error for download endpoint" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) empty transcoded output returns 200 with empty body for stream endpoint" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] stream.view (legacy streaming) empty transcoded output returns 200 with empty body for download endpoint" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Internet Radio Endpoints getInternetRadioStations returns empty initially" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Internet Radio Endpoints createInternetRadioStation adds a station" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Internet Radio Endpoints getInternetRadioStations returns the created station" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Internet Radio Endpoints updateInternetRadioStation modifies the station" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Internet Radio Endpoints deleteInternetRadioStation removes it" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Internet Radio Endpoints getInternetRadioStations returns empty after deletion" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Unfavorite Integration Tests Level 2: UI removes song from favorites through real backend returns a success response when unstarring a previously starred song" classname="Subsonic API E2E Suite" status="passed" time="0.02036164">
+              <system-err>&gt; Enter [BeforeAll] Unfavorite Integration Tests - /workspace/server/e2e/unfavorite_integration_test.go:21 @ 05/23/26 01:54:02.583&#xA;&lt; Exit [BeforeAll] Unfavorite Integration Tests - /workspace/server/e2e/unfavorite_integration_test.go:21 @ 05/23/26 01:54:02.599 (16ms)&#xA;&gt; Enter [BeforeAll] Level 2: UI removes song from favorites through real backend - /workspace/server/e2e/unfavorite_integration_test.go:35 @ 05/23/26 01:54:02.599&#xA;&lt; Exit [BeforeAll] Level 2: UI removes song from favorites through real backend - /workspace/server/e2e/unfavorite_integration_test.go:35 @ 05/23/26 01:54:02.601 (3ms)&#xA;&gt; Enter [It] returns a success response when unstarring a previously starred song - /workspace/server/e2e/unfavorite_integration_test.go:46 @ 05/23/26 01:54:02.601&#xA;&lt; Exit [It] returns a success response when unstarring a previously starred song - /workspace/server/e2e/unfavorite_integration_test.go:46 @ 05/23/26 01:54:02.602 (1ms)&#xA;&gt; Enter [AfterAll] Level 2: UI removes song from favorites through real backend - /workspace/server/e2e/unfavorite_integration_test.go:41 @ 05/23/26 01:54:02.602&#xA;&lt; Exit [AfterAll] Level 2: UI removes song from favorites through real backend - /workspace/server/e2e/unfavorite_integration_test.go:41 @ 05/23/26 01:54:02.603 (1ms)&#xA;</system-err>
+          </testcase>
+          <testcase name="[It] Unfavorite Integration Tests Level 3: Unfavorite state persists after reload song remains not favorite and does not appear in favorites after re-fetching" classname="Subsonic API E2E Suite" status="passed" time="0.006436487">
+              <system-err>&gt; Enter [BeforeAll] Level 3: Unfavorite state persists after reload - /workspace/server/e2e/unfavorite_integration_test.go:60 @ 05/23/26 01:54:02.603&#xA;&lt; Exit [BeforeAll] Level 3: Unfavorite state persists after reload - /workspace/server/e2e/unfavorite_integration_test.go:60 @ 05/23/26 01:54:02.604 (1ms)&#xA;&gt; Enter [It] song remains not favorite and does not appear in favorites after re-fetching - /workspace/server/e2e/unfavorite_integration_test.go:71 @ 05/23/26 01:54:02.604&#xA;&lt; Exit [It] song remains not favorite and does not appear in favorites after re-fetching - /workspace/server/e2e/unfavorite_integration_test.go:71 @ 05/23/26 01:54:02.608 (4ms)&#xA;&gt; Enter [AfterAll] Level 3: Unfavorite state persists after reload - /workspace/server/e2e/unfavorite_integration_test.go:66 @ 05/23/26 01:54:02.608&#xA;&lt; Exit [AfterAll] Level 3: Unfavorite state persists after reload - /workspace/server/e2e/unfavorite_integration_test.go:66 @ 05/23/26 01:54:02.609 (1ms)&#xA;&gt; Enter [DeferCleanup (All)] Unfavorite Integration Tests - /workspace/server/e2e/e2e_suite_test.go:470 @ 05/23/26 01:54:02.609&#xA;&lt; Exit [DeferCleanup (All)] Unfavorite Integration Tests - /workspace/server/e2e/e2e_suite_test.go:470 @ 05/23/26 01:54:02.609 (0s)&#xA;&gt; Enter [DeferCleanup (All)] Unfavorite Integration Tests - /workspace/server/e2e/e2e_suite_test.go:469 @ 05/23/26 01:54:02.609&#xA;&lt; Exit [DeferCleanup (All)] Unfavorite Integration Tests - /workspace/server/e2e/e2e_suite_test.go:469 @ 05/23/26 01:54:02.609 (0s)&#xA;&gt; Enter [DeferCleanup (All)] Unfavorite Integration Tests - /workspace/server/e2e/e2e_suite_test.go:467 @ 05/23/26 01:54:02.609&#xA;&lt; Exit [DeferCleanup (All)] Unfavorite Integration Tests - /workspace/server/e2e/e2e_suite_test.go:467 @ 05/23/26 01:54:02.609 (0s)&#xA;</system-err>
+          </testcase>
+          <testcase name="[It] System Endpoints ping returns a successful response" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] System Endpoints getLicense returns a valid license" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] System Endpoints getOpenSubsonicExtensions returns a list of supported extensions" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] System Endpoints getOpenSubsonicExtensions includes the transcodeOffset extension" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] System Endpoints getOpenSubsonicExtensions includes the formPost extension" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] System Endpoints getOpenSubsonicExtensions includes the songLyrics extension" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints Star/Unstar stars a song by id" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints Star/Unstar starred song appears in getStarred response" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints Star/Unstar unstars a previously starred song" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints Star/Unstar stars an album by albumId" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints Star/Unstar stars an artist by artistId" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints Star/Unstar returns error when no id provided" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints SetRating sets rating on a song" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints SetRating rated song has correct userRating in getSong" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints SetRating sets rating on an album" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints SetRating returns error for missing parameters" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints Scrobble submits a scrobble for a song" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints Scrobble returns error when id is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints ReportPlayback returns error when required params are missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints ReportPlayback returns error for invalid state" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints ReportPlayback starting report creates a getNowPlaying entry" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints ReportPlayback playing report updates getNowPlaying state and position" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints ReportPlayback paused report freezes position in getNowPlaying" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints ReportPlayback stopped report removes entry from getNowPlaying" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints ReportPlayback accepts mediaType=podcast without error" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Annotation Endpoints ReportPlayback accepts optional playbackRate and ignoreScrobble" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision error cases returns 405 for GET request" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision error cases returns error when mediaId is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision error cases returns error when mediaType is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision error cases returns error for unsupported mediaType" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision error cases returns error for invalid JSON body" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision error cases returns error for empty JSON body" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision error cases returns error for non-existent media ID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision error cases returns error for invalid protocol in body" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision error cases returns error for invalid comparison operator in body" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision direct play decisions allows MP3 direct play when client supports mp3" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision direct play decisions allows FLAC direct play when client supports flac" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision direct play decisions allows ALAC direct play via m4a container + alac codec matching" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision direct play decisions allows Opus direct play when client supports opus" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision direct play decisions denies direct play when container mismatches" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision direct play decisions denies direct play when codec mismatches" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision direct play decisions denies direct play when maxAudioBitrate exceeded" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision transcode decisions transcodes FLAC to MP3 when client only supports MP3" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision transcode decisions transcodes FLAC hi-res to Opus with correct sample rate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision transcode decisions transcodes DSD to FLAC with normalized sample rate and bit depth" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision transcode decisions refuses lossy to lossless transcoding: MP3 to FLAC" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision transcode decisions caps transcode bitrate via maxTranscodingAudioBitrate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision transcode decisions clamps multichannel FLAC to 2 channels when transcoding to MP3 (#5336)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision response structure has correct sourceStream details" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision response structure reports audioBitrate in bps (kbps * 1000)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision player MaxBitRate cap is ignored allows direct play even when source bitrate exceeds player MaxBitRate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision player MaxBitRate cap is ignored uses only client limit, not player MaxBitRate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision format-aware default bitrate uses mp3 format default (192kbps) for lossless-to-mp3 with no bitrate limits" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision format-aware default bitrate uses opus format default (128kbps) for lossless-to-opus with no bitrate limits" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision format-aware default bitrate uses maxAudioBitrate as fallback for lossless-to-lossy when no maxTranscodingAudioBitrate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision format-aware default bitrate prefers maxTranscodingAudioBitrate over maxAudioBitrate for lossless-to-lossy" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision player MaxBitRate is ignored by getTranscodeDecision does not inject maxAudioBitrate from player cap" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeDecision player MaxBitRate is ignored by getTranscodeDecision uses only client maxTranscodingAudioBitrate, ignoring player cap" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream error cases returns 400 when mediaId is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream error cases returns 400 when mediaType is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream error cases returns 400 when transcodeParams is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream error cases returns 400 for unsupported mediaType" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream error cases returns 410 for malformed token" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream error cases returns 410 for stale token (media file updated after token issued)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream error cases returns 500 when stream creation fails" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream error cases returns 500 when transcoded stream is empty" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream round-trip: decision then stream streams direct play for MP3" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream round-trip: decision then stream streams transcoded FLAC to MP3" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Transcode Endpoints getTranscodeStream round-trip: decision then stream passes offset through to stream request" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Scan Endpoints getScanStatus returns status" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Scan Endpoints startScan requires admin user" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Scan Endpoints startScan returns scan status response" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] User Endpoints getUser returns current user info" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] User Endpoints getUser with matching username case-insensitive succeeds" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] User Endpoints getUser with different username returns authorization error" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] User Endpoints getUsers returns list with current user only" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream returns error when id parameter is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream streams raw when no format or bitrate specified" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream streams raw when format=raw" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream transcodes to different format with bitrate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream downsamples when only maxBitRate is specified (lower than source)" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream streams raw when maxBitRate is higher than source" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream streams raw when format matches source and no bitrate reduction" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream transcodes when same format but lower bitrate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream falls back to default downsampling format for unknown format" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Stream passes timeOffset through" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Download returns error when id parameter is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Download downloads raw when no format specified and AutoTranscodeDownload is false" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Download downloads with explicit format and bitrate" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints Download returns error when downloads are disabled" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints GetCoverArt handles request without error" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints GetAvatar returns placeholder avatar when gravatar disabled" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints GetLyrics returns empty lyrics when no match found" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints GetLyricsBySongId returns error when id parameter is missing" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Media Retrieval Endpoints GetLyricsBySongId returns error for non-existent song id" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getMusicFolders returns the configured music library" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getIndexes returns artist indexes" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getIndexes includes all artists across indexes" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getArtists returns artist indexes in ID3 format" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getArtists includes all artists across ID3 indexes" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getArtists reports correct album counts for artists" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getMusicDirectory returns an artist directory with its albums as children" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getMusicDirectory returns an album directory with its tracks as children" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getMusicDirectory returns an error for a non-existent ID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getArtist returns artist with albums in ID3 format" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getArtist returns album names for the artist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getArtist returns an error for a non-existent artist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getArtist returns artist with a single album" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getAlbum returns album with its tracks" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getAlbum includes correct track metadata" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getAlbum returns album with correct artist and year" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getAlbum returns an error for a non-existent album" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getSong returns a song by its ID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getSong returns an error for a non-existent song" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getSong returns correct metadata for a jazz track" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getGenres returns all genres" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getGenres includes correct genre names" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getGenres reports correct song and album counts for Rock" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getGenres reports correct song and album counts for Jazz" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getGenres reports correct song and album counts for Pop" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getAlbumInfo returns album info for a valid album" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getAlbumInfo2 returns album info for a valid album" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getArtistInfo returns artist info for a valid artist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getArtistInfo2 returns artist info2 for a valid artist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getTopSongs returns a response for a known artist name" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getTopSongs returns an empty list for an unknown artist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getSimilarSongs returns a response for a valid song ID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Browsing Endpoints getSimilarSongs2 returns a response for a valid song ID" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support getMusicFolders returns both libraries for admin user" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support getArtists - library filtering returns only lib1 artists when musicFolderId=1" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support getArtists - library filtering returns only lib2 artists when musicFolderId=2" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support getArtists - library filtering returns artists from all libraries when no musicFolderId is specified" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support getAlbumList - library filtering returns only lib1 albums when musicFolderId=1" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support getAlbumList - library filtering returns only lib2 albums when musicFolderId=2" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support search3 - library filtering does not find lib1 content when searching in lib2 only" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support search3 - library filtering finds lib2 content when searching in lib2" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support Cross-library playlists admin creates a playlist with songs from both libraries" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support Cross-library playlists admin makes the playlist public" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support Cross-library playlists non-admin user with lib1 only sees only lib1 tracks in the playlist" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support Cross-library shares admin creates a share for a lib2 album" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support Library access control returns error when non-admin user requests inaccessible library" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support Library access control non-admin user sees only their library&#39;s content without musicFolderId" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support Library access control non-admin user search returns only their library&#39;s content" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Multi-Library Support Library access control non-admin user search finds content from their library" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints Bookmark Endpoints getBookmarks returns empty initially" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints Bookmark Endpoints createBookmark creates a bookmark with position" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints Bookmark Endpoints getBookmarks shows the created bookmark" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints Bookmark Endpoints deleteBookmark removes the bookmark" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints PlayQueue Endpoints getPlayQueue returns minimum required fields when nothing specified" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints PlayQueue Endpoints getPlayQueueByIndex returns minimum required fields when nothing specified" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints PlayQueue Endpoints savePlayQueue stores current play queue" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints PlayQueue Endpoints getPlayQueue returns saved queue with tracks" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints PlayQueue Endpoints getPlayQueueByIndex returns data with current index" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[It] Bookmark and PlayQueue Endpoints PlayQueue Endpoints savePlayQueueByIndex stores queue by index" classname="Subsonic API E2E Suite" status="skipped" time="0">
+              <skipped message="skipped"></skipped>
+          </testcase>
+          <testcase name="[AfterSuite]" classname="Subsonic API E2E Suite" status="passed" time="0.014306317">
+              <system-err>&gt; Enter [AfterSuite] TOP-LEVEL - /workspace/server/e2e/e2e_suite_test.go:460 @ 05/23/26 01:54:02.612&#xA;&lt; Exit [AfterSuite] TOP-LEVEL - /workspace/server/e2e/e2e_suite_test.go:460 @ 05/23/26 01:54:02.627 (14ms)&#xA;</system-err>
+          </testcase>
+          <testcase name="[DeferCleanup (Suite)]" classname="Subsonic API E2E Suite" status="passed" time="3.45e-05">
+              <system-err>&gt; Enter [DeferCleanup (Suite)] TOP-LEVEL - /workspace/server/e2e/e2e_suite_test.go:441 @ 05/23/26 01:54:02.627&#xA;&lt; Exit [DeferCleanup (Suite)] TOP-LEVEL - /workspace/server/e2e/e2e_suite_test.go:441 @ 05/23/26 01:54:02.627 (0s)&#xA;</system-err>
+          </testcase>
+          <testcase name="[DeferCleanup (Suite)]" classname="Subsonic API E2E Suite" status="passed" time="0.001420744">
+              <system-err>&gt; Enter [DeferCleanup (Suite)] TOP-LEVEL - /go/pkg/mod/github.com/onsi/ginkgo/v2@v2.28.3/internal/testingtproxy/testing_t_proxy.go:179 @ 05/23/26 01:54:02.627&#xA;&lt; Exit [DeferCleanup (Suite)] TOP-LEVEL - /go/pkg/mod/github.com/onsi/ginkgo/v2@v2.28.3/internal/testingtproxy/testing_t_proxy.go:179 @ 05/23/26 01:54:02.628 (1ms)&#xA;</system-err>
+          </testcase>
+          <testcase name="[DeferCleanup (Suite)]" classname="Subsonic API E2E Suite" status="passed" time="3.5803e-05">
+              <system-err>&gt; Enter [DeferCleanup (Suite)] TOP-LEVEL - /workspace/server/e2e/e2e_suite_test.go:403 @ 05/23/26 01:54:02.628&#xA;&lt; Exit [DeferCleanup (Suite)] TOP-LEVEL - /workspace/server/e2e/e2e_suite_test.go:403 @ 05/23/26 01:54:02.628 (0s)&#xA;</system-err>
+          </testcase>
+      </testsuite>
+  </testsuites>

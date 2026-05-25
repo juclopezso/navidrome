@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep -l \"star\\\\|favorite\")",
+      "Bash(go test *)",
+      "Bash(go build *)",
+      "Bash(git stash *)",
+      "Bash(go list *)",
+      "Bash(go vet *)",
+      "Bash(where gcc *)"
+    ]
+  }
+}
