@@ -25,11 +25,18 @@ interface PlaylistEntry {
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 async function loginViaUI(page: Page, username: string, password: string): Promise<void> {
-  await page.goto(BASE_URL, { waitUntil: 'domcontentloaded' })
-  await page.getByRole('textbox').first().fill(username)
+  await page.goto(BASE_URL)
+  // Espera el formulario (tolera recargas de Vite en primera carga)
+  const usernameInput = page.getByRole('textbox').first()
+  await usernameInput.waitFor({ state: 'visible', timeout: 60000 })
+  await usernameInput.fill(username)
   await page.locator('input[name="password"]').fill(password)
   await page.getByRole('button', { name: 'Sign in' }).click()
-  await expect(page.getByRole('heading', { name: /Navidrome/i })).toBeVisible({ timeout: 15000 })
+  // Tras login exitoso el hash cambia a '#/<recurso>' — funciona para cualquier usuario
+  await page.waitForURL(
+    (url) => url.hash.startsWith('#/') && !url.hash.startsWith('#/login'),
+    { timeout: 30000 },
+  )
 }
 
 async function getAuthTokens(page: Page, username: string, password: string): Promise<AuthTokens> {
@@ -41,8 +48,16 @@ async function getAuthTokens(page: Page, username: string, password: string): Pr
         body: JSON.stringify({ username, password }),
       })
       if (!res.ok) throw new Error(`Auth failed: ${res.status}`)
-      const data = (await res.json()) as AuthTokens
-      return { username: data.username, subsonicToken: data.subsonicToken, subsonicSalt: data.subsonicSalt }
+      const data = (await res.json()) as {
+        username: string
+        subsonicToken: string
+        subsonicSalt: string
+      }
+      return {
+        username: data.username,
+        subsonicToken: data.subsonicToken,
+        subsonicSalt: data.subsonicSalt,
+      }
     },
     { username, password, baseUrl: BASE_URL },
   )
@@ -96,41 +111,46 @@ async function getPlaylistsViaApi(page: Page, auth: AuthTokens): Promise<Playlis
 
 // FR-01
 test('FR-01: muestra únicamente las playlists del usuario autenticado', async ({ page }) => {
+  // 1. Login en la UI primero — si las credenciales son incorrectas se ve aquí
   await loginViaUI(page, TEST_USER, TEST_PASSWORD)
+
+  // 2. Con el browser ya en la app, obtenemos tokens de ambos usuarios vía API
   const testAuth = await getAuthTokens(page, TEST_USER, TEST_PASSWORD)
 
-  // Create a sentinel playlist owned by TEST_USER
+  // 3. Creamos una playlist propia de TEST_USER para confirmar que sí la ve
   const ownName = `FR01-own-${Date.now()}`
   const ownId = await createPlaylistViaApi(page, testAuth, ownName)
 
-  // Optionally create a private playlist owned by a different user (ADMIN)
-  let otherName: string | null = null
-  let otherId: string | null = null
+  // 4. Si hay un usuario admin distinto, creamos su playlist (no debería verse)
+  let adminName: string | null = null
+  let adminId: string | null = null
   let adminAuth: AuthTokens | null = null
 
   if (ADMIN_USER !== TEST_USER) {
     adminAuth = await getAuthTokens(page, ADMIN_USER, ADMIN_PASSWORD)
-    otherName = `FR01-other-${Date.now()}`
-    otherId = await createPlaylistViaApi(page, adminAuth, otherName)
+    adminName = `FR01-admin-${Date.now()}`
+    adminId = await createPlaylistViaApi(page, adminAuth, adminName)
   }
 
   try {
-    await page.goto(`${BASE_URL}/#/playlist`, { waitUntil: 'domcontentloaded' })
+    // 5. Navegamos a la sección de playlists
+    await page.goto(`${BASE_URL}/#/playlist`, { waitUntil: 'load' })
 
-    // Wait for the playlist list to render
-    await expect(page.locator('tbody').getByText(ownName, { exact: true })).toBeVisible({ timeout: 15000 })
+    // La playlist propia debe verse
+    await expect(
+      page.locator('tbody').getByText(ownName, { exact: true }),
+    ).toBeVisible({ timeout: 15000 })
 
-    // TEST_USER must see their own playlist
-    await expect(page.locator('tbody').getByText(ownName, { exact: true })).toBeVisible()
-
-    // TEST_USER must NOT see the other user's playlist (cross-user isolation)
-    if (otherName) {
-      await expect(page.locator('tbody').getByText(otherName, { exact: true })).not.toBeVisible()
+    // La playlist del admin NO debe verse (solo verificable con dos usuarios distintos)
+    if (adminName) {
+      await expect(
+        page.locator('tbody').getByText(adminName, { exact: true }),
+      ).not.toBeVisible()
     }
   } finally {
-    await deletePlaylistViaApi(page, testAuth, ownId)
-    if (otherId && adminAuth) {
-      await deletePlaylistViaApi(page, adminAuth, otherId)
+    await deletePlaylistViaApi(page, testAuth, ownId).catch(() => {})
+    if (adminId && adminAuth) {
+      await deletePlaylistViaApi(page, adminAuth, adminId).catch(() => {})
     }
   }
 })
@@ -143,29 +163,28 @@ test('FR-02: crea una playlist y la asocia al usuario autenticado', async ({ pag
   const auth = await getAuthTokens(page, TEST_USER, TEST_PASSWORD)
 
   try {
-    // Navigate to the create form
-    await page.goto(`${BASE_URL}/#/playlist/create`, { waitUntil: 'domcontentloaded' })
+    // Navegamos al formulario de creación
+    await page.goto(`${BASE_URL}/#/playlist/create`, { waitUntil: 'load' })
 
-    // Fill the name field and submit
+    // Rellenamos el nombre y guardamos
     await page.locator('input[name="name"]').waitFor({ timeout: 10000 })
     await page.locator('input[name="name"]').fill(playlistName)
     await page.getByRole('button', { name: /save/i }).click()
 
-    // React Admin redirects to the list after a successful create
+    // React Admin redirige al listado tras crear con éxito
     await page.waitForURL(/\/#\/playlist(?:\?.*)?$/, { timeout: 15000 })
 
-    // New playlist must appear in the list
+    // La nueva playlist debe aparecer en la tabla
     await expect(
       page.locator('tbody').getByText(playlistName, { exact: true }),
     ).toBeVisible({ timeout: 10000 })
 
-    // Verify via Subsonic API that the playlist exists and belongs to TEST_USER
+    // La API Subsonic también debe reportarla como propiedad de TEST_USER
     const playlists = await getPlaylistsViaApi(page, auth)
     const created = playlists.find((p) => p.name === playlistName)
-    expect(created, 'Playlist must exist in the Subsonic API response for TEST_USER').toBeDefined()
+    expect(created, 'La playlist debe existir en la respuesta de la API Subsonic').toBeDefined()
     expect(created!.owner).toBe(TEST_USER)
   } finally {
-    // Cleanup: delete any playlist created with this name
     const playlists = await getPlaylistsViaApi(page, auth)
     for (const p of playlists.filter((p) => p.name === playlistName)) {
       await deletePlaylistViaApi(page, auth, p.id)
@@ -183,33 +202,30 @@ test('FR-03: permite crear dos playlists con el mismo nombre y coexisten de form
   const auth = await getAuthTokens(page, TEST_USER, TEST_PASSWORD)
 
   try {
-    // Create first playlist via the UI form
-    await page.goto(`${BASE_URL}/#/playlist/create`, { waitUntil: 'domcontentloaded' })
+    // Primera playlist con el nombre compartido
+    await page.goto(`${BASE_URL}/#/playlist/create`, { waitUntil: 'load' })
     await page.locator('input[name="name"]').waitFor({ timeout: 10000 })
     await page.locator('input[name="name"]').fill(sharedName)
     await page.getByRole('button', { name: /save/i }).click()
     await page.waitForURL(/\/#\/playlist(?:\?.*)?$/, { timeout: 15000 })
 
-    // Create second playlist with the same name
-    await page.goto(`${BASE_URL}/#/playlist/create`, { waitUntil: 'domcontentloaded' })
+    // Segunda playlist con el mismo nombre
+    await page.goto(`${BASE_URL}/#/playlist/create`, { waitUntil: 'load' })
     await page.locator('input[name="name"]').waitFor({ timeout: 10000 })
     await page.locator('input[name="name"]').fill(sharedName)
     await page.getByRole('button', { name: /save/i }).click()
     await page.waitForURL(/\/#\/playlist(?:\?.*)?$/, { timeout: 15000 })
 
-    // Both playlists must appear as separate rows in the list
+    // Deben aparecer dos filas separadas con el mismo nombre
     const matchingRows = page.locator('tbody tr').filter({ hasText: sharedName })
     await expect(matchingRows).toHaveCount(2, { timeout: 10000 })
 
-    // Verify via Subsonic API: two entries with the same name and different IDs
+    // La API también debe reportar dos entradas con IDs distintos
     const playlists = await getPlaylistsViaApi(page, auth)
     const duplicates = playlists.filter((p) => p.name === sharedName)
-    expect(duplicates, 'Both playlists must exist in the Subsonic API').toHaveLength(2)
-    expect(duplicates[0].id, 'Playlists with the same name must have different IDs').not.toBe(
-      duplicates[1].id,
-    )
+    expect(duplicates, 'Deben existir exactamente 2 playlists con el mismo nombre').toHaveLength(2)
+    expect(duplicates[0].id, 'Las dos playlists deben tener IDs distintos').not.toBe(duplicates[1].id)
   } finally {
-    // Cleanup: delete all playlists with this name
     const playlists = await getPlaylistsViaApi(page, auth)
     for (const p of playlists.filter((p) => p.name === sharedName)) {
       await deletePlaylistViaApi(page, auth, p.id)

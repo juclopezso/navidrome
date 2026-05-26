@@ -23,7 +23,10 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        launchOptions: { slowMo: 800 },  // 800 ms entre cada acción
+      },
     },
   ],
 })
