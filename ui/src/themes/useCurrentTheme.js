@@ -8,18 +8,18 @@ import { useEffect } from 'react'
 const useCurrentTheme = () => {
   const prefersLightMode = useMediaQuery('(prefers-color-scheme: light)')
   const defaultTheme = () => {
-    themes[config.defaultTheme] ? config.defaultTheme : themes.DarkTheme
+    return themes[config.defaultTheme] ? config.defaultTheme : themes.LightTheme
   }
   const theme = useSelector((state) => {
     if (state.theme === AUTO_THEME_ID) {
-      return prefersLightMode ? themes.LightTheme : defaultTheme
+      return prefersLightMode ? themes.LightTheme : themes.Neon
     }
     const themeName =
       Object.keys(themes).find((t) => t === state.theme) ||
       Object.keys(themes).find(
         (t) => themes[t].themeName === config.defaultTheme,
       ) ||
-      'DarkTheme'
+      'Neon'
     return themes[themeName]
   })
 
