@@ -15,6 +15,7 @@ import NutballTheme from './nutball'
 import AmusicTheme from './amusic'
 import SquiddiesGlassTheme from './SquiddiesGlass'
 import NautilineTheme from './nautiline'
+import Neon from './neon'
 
 export default {
   // Classic default themes
@@ -32,6 +33,7 @@ export default {
   LigeraTheme,
   MonokaiTheme,
   NautilineTheme,
+  Neon,
   NordTheme,
   NuclearTheme,
   NutballTheme,
