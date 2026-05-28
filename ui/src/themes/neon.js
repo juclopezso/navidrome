@@ -9,7 +9,7 @@ const textMuted = '#efe2fc'
 
 const primary = '#FF2BD6'
 const primaryBright = '#FF3B77'
-const secondary = '#9741e8'
+const secondary = '#62357c'
 
 const border = '#FF2BD6'
 const shadow = '#111'
@@ -312,9 +312,6 @@ export default {
     MuiTypography: {
       colorTextSecondary: {
         color: lightBlue,
-      },
-      h6: {
-        color: greenNeon,
       },
       error: {
         color: errorRed,
