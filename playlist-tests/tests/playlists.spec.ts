@@ -22,6 +22,11 @@ interface PlaylistEntry {
   owner: string
 }
 
+interface SongEntry {
+  id: string
+  title: string
+}
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 async function loginViaUI(page: Page, username: string, password: string): Promise<void> {
@@ -107,6 +112,23 @@ async function getPlaylistsViaApi(page: Page, auth: AuthTokens): Promise<Playlis
   return (Array.isArray(raw) ? raw : [raw]) as PlaylistEntry[]
 }
 
+async function getFirstSongViaApi(page: Page, auth: AuthTokens): Promise<SongEntry | null> {
+  const result = await subsonicCall(page, auth, 'getRandomSongs', { size: '1' })
+  const songs = (result['randomSongs'] as { song?: unknown } | undefined)?.song
+  if (!songs) return null
+  const list = Array.isArray(songs) ? songs : [songs]
+  return list[0] as SongEntry
+}
+
+async function addSongToPlaylistViaApi(
+  page: Page,
+  auth: AuthTokens,
+  playlistId: string,
+  songId: string,
+): Promise<void> {
+  await subsonicCall(page, auth, 'updatePlaylist', { playlistId, songIdToAdd: songId })
+}
+
 // ─── Tests ───────────────────────────────────────────────────────────────────
 
 // FR-01
@@ -148,9 +170,9 @@ test('FR-01: muestra únicamente las playlists del usuario autenticado', async (
       ).not.toBeVisible()
     }
   } finally {
-    await deletePlaylistViaApi(page, testAuth, ownId).catch(() => {})
+    await deletePlaylistViaApi(page, testAuth, ownId).catch(() => { })
     if (adminId && adminAuth) {
-      await deletePlaylistViaApi(page, adminAuth, adminId).catch(() => {})
+      await deletePlaylistViaApi(page, adminAuth, adminId).catch(() => { })
     }
   }
 })
@@ -230,5 +252,182 @@ test('FR-03: permite crear dos playlists con el mismo nombre y coexisten de form
     for (const p of playlists.filter((p) => p.name === sharedName)) {
       await deletePlaylistViaApi(page, auth, p.id)
     }
+  }
+})
+
+// FR-04
+test('FR-04: Permite agregar una canción a una playlist existente', async ({ page }) => {
+  //const playlistName = `FR04-playlist-${Date.now()}`
+  const playlistName = `FR04-TEST_PLAYLIST`
+
+
+  await loginViaUI(page, TEST_USER, TEST_PASSWORD)
+  const auth = await getAuthTokens(page, TEST_USER, TEST_PASSWORD)
+
+  // Precondición: crear playlist vacía y verificar que hay canciones disponibles
+  const playlistId = await createPlaylistViaApi(page, auth, playlistName)
+  const song = await getFirstSongViaApi(page, auth)
+  expect(song, 'Debe haber al menos una canción en la biblioteca').not.toBeNull()
+
+  try {
+    // Navegar al listado de canciones
+    await page.goto(`${BASE_URL}/#/song`, { waitUntil: 'load' })
+    await page.locator('tbody tr').first().waitFor({ state: 'visible', timeout: 15000 })
+
+    // Hover para que el checkbox se vuelva visible y luego seleccionar
+    await page.locator('tbody tr').first().hover()
+    await page.locator('tbody tr').first().locator('input[data-indeterminate]').click({ force: true })
+
+    // Esperar la barra de bulk actions y hacer click en "Add to Playlist"
+    const addToPlaylistBtn = page.getByRole('button', { name: /add to playlist/i })
+    await addToPlaylistBtn.waitFor({ state: 'visible', timeout: 10000 })
+    await addToPlaylistBtn.click()
+
+    // Esperar el diálogo de selección de playlist
+    await page.getByRole('dialog').waitFor({ state: 'visible', timeout: 10000 })
+
+    // Filtrar por nombre de la playlist en el campo de búsqueda
+    const searchField = page.getByRole('dialog').locator('input').first()
+    await searchField.fill(playlistName)
+
+    // Hacer click en el item de la playlist en la lista
+    await page.getByRole('dialog').getByText(playlistName, { exact: true }).click()
+
+    // El botón "Add" se habilita → hacer click
+    const addBtn = page.locator('[data-testid="playlist-add"]')
+    await expect(addBtn).toBeEnabled({ timeout: 5000 })
+    await addBtn.click()
+
+    // Esperar que el diálogo se cierre
+    await page.getByRole('dialog').waitFor({ state: 'hidden', timeout: 10000 })
+
+    // Verificar en la UI: navegar a la playlist y confirmar que la canción aparece
+    await page.goto(`${BASE_URL}/#/playlist/${playlistId}/show`, { waitUntil: 'commit' })
+    await expect(
+      page.locator('tbody tr').first(),
+      'La canción debe aparecer en la vista de la playlist',
+    ).toBeVisible({ timeout: 20000 })
+
+    // Verificar via API que la playlist ahora tiene al menos una canción
+    const result = await subsonicCall(page, auth, 'getPlaylist', { id: playlistId })
+    const entry = (result['playlist'] as { entry?: unknown })?.entry
+    const entries = entry ? (Array.isArray(entry) ? entry : [entry]) : []
+    expect(entries.length, 'La playlist debe tener al menos una canción').toBeGreaterThanOrEqual(1)
+  } finally {
+    await deletePlaylistViaApi(page, auth, playlistId).catch(() => { })
+  }
+})
+
+// FR-05
+test('FR-05: Permite eliminar una canción de una playlist', async ({ page }) => {
+  const playlistName = `FR05-TEST_PLAYLIST`
+
+  await loginViaUI(page, TEST_USER, TEST_PASSWORD)
+  const auth = await getAuthTokens(page, TEST_USER, TEST_PASSWORD)
+
+  // Precondición: crear playlist y agregar DOS canciones via API
+  const songs = await subsonicCall(page, auth, 'getRandomSongs', { size: '2' })
+  const rawSongs = (songs['randomSongs'] as { song?: unknown })?.song
+  const songList = rawSongs ? (Array.isArray(rawSongs) ? rawSongs : [rawSongs]) as SongEntry[] : []
+  expect(songList.length, 'Debe haber al menos una canción en la biblioteca').toBeGreaterThan(0)
+
+  const playlistId = await createPlaylistViaApi(page, auth, playlistName)
+  // Agregar las dos canciones (si solo hay una en la biblioteca, se agrega dos veces)
+  await addSongToPlaylistViaApi(page, auth, playlistId, songList[0].id)
+  await addSongToPlaylistViaApi(page, auth, playlistId, (songList[1] ?? songList[0]).id)
+
+  try {
+    // Navegar a la vista de la playlist y confirmar que hay 2 canciones
+    await page.goto(`${BASE_URL}/#/playlist/${playlistId}/show`, { waitUntil: 'load' })
+    await expect(page.locator('tbody tr'), 'La playlist debe tener 2 canciones antes de eliminar')
+      .toHaveCount(2, { timeout: 15000 })
+
+    // Capturar el título de la primera canción para verificar que desaparece
+    const firstRowTitle = await page.locator('tbody tr').first().textContent()
+
+    // Hover para que el checkbox se vuelva visible y seleccionar la primera canción
+    await page.locator('tbody tr').first().hover()
+    await page.locator('tbody tr').first().locator('input[data-indeterminate]').click({ force: true })
+
+    // Hacer click en el botón "Remove" de la barra bulk
+    const removeBtn = page.getByRole('button', { name: /remove/i })
+    await removeBtn.waitFor({ state: 'visible', timeout: 10000 })
+    await removeBtn.click()
+
+    // Confirmar el diálogo si aparece
+    const confirmBtn = page.getByRole('button', { name: /confirm/i })
+    const confirmVisible = await confirmBtn.isVisible().catch(() => false)
+    if (confirmVisible) {
+      await confirmBtn.click()
+    }
+
+    // Verificar en la UI: ahora debe quedar exactamente 1 canción
+    await expect(page.locator('tbody tr'), 'Debe quedar 1 canción tras eliminar la primera')
+      .toHaveCount(1, { timeout: 15000 })
+
+    // Verificar via API que la playlist tiene exactamente 1 canción
+    const result = await subsonicCall(page, auth, 'getPlaylist', { id: playlistId })
+    const entry = (result['playlist'] as { entry?: unknown })?.entry
+    const remaining = entry ? (Array.isArray(entry) ? entry : [entry]) : []
+    expect(remaining, 'La API debe reportar exactamente 1 canción restante').toHaveLength(1)
+
+    // La canción eliminada ya no debe estar en la tabla (solo aplica si las canciones eran distintas)
+    if (songList.length >= 2 && songList[0].id !== songList[1].id) {
+      expect(
+        await page.locator('tbody').textContent(),
+        'El título de la canción eliminada no debe aparecer',
+      ).not.toContain(firstRowTitle?.trim())
+    }
+  } finally {
+    await deletePlaylistViaApi(page, auth, playlistId).catch(() => { })
+  }
+})
+
+// FR-06
+test('FR-06: Permite eliminar una playlist completa', async ({ page }) => {
+
+  const playlistName = `FR06-TEST_PLAYLIST`
+  await loginViaUI(page, TEST_USER, TEST_PASSWORD)
+  const auth = await getAuthTokens(page, TEST_USER, TEST_PASSWORD)
+
+  // Precondición: crear una playlist via API
+  const playlistId = await createPlaylistViaApi(page, auth, playlistName)
+
+  try {
+    // Navegar al listado de playlists
+    await page.goto(`${BASE_URL}/#/playlist`, { waitUntil: 'load' })
+
+    // Identificar la fila exacta por el href del botón Edit que contiene el playlistId
+    // Esto evita ambigüedad cuando existen varias filas con el mismo nombre "TEST_PLAYLIST"
+    const playlistRow = page.locator('tbody tr').filter({
+      has: page.locator(`a[href*="${playlistId}"]`),
+    })
+    await expect(playlistRow).toBeVisible({ timeout: 15000 })
+
+    // Hover para que el checkbox se vuelva visible y luego seleccionar
+    // Se usa data-indeterminate para distinguir el checkbox de selección del Switch de "Public"
+    await playlistRow.hover()
+    await playlistRow.locator('input[data-indeterminate]').click({ force: true })
+
+    // Hacer click en el botón "Delete" de la barra bulk
+    const deleteBtn = page.getByRole('button', { name: /delete/i })
+    await deleteBtn.waitFor({ state: 'visible', timeout: 10000 })
+    await deleteBtn.click()
+
+    // Esperar que la fila desaparezca de la UI (RA la elimina optimistamente)
+    await expect(playlistRow).not.toBeVisible({ timeout: 25000 })
+
+    // RA v3 usa undoable mode: el DELETE llega al servidor después de ~5s (undo window).
+    // expect.poll reintenta hasta que la API confirme la eliminación real.
+    await expect.poll(
+      async () => {
+        const playlists = await getPlaylistsViaApi(page, auth)
+        return playlists.find((p) => p.id === playlistId)
+      },
+      { message: 'La playlist eliminada no debe aparecer en la API', timeout: 15000 },
+    ).toBeUndefined()
+  } catch (e) {
+    await deletePlaylistViaApi(page, auth, playlistId).catch(() => { })
+    throw e
   }
 })
