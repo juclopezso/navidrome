@@ -293,10 +293,29 @@ test('FR-04: Permite agregar una canción a una playlist existente', async ({ pa
     // Hacer click en el item de la playlist en la lista
     await page.getByRole('dialog').getByText(playlistName, { exact: true }).click()
 
+    // Registrar la captura ANTES del click — así no se pierde la request si llega rápido
+    const addRequestPromise = page.waitForRequest(
+      (req) =>
+        req.url().includes(`/api/playlist/`) &&
+        req.url().includes('/tracks') &&
+        req.method() === 'POST',
+      { timeout: 15000 },
+    )
+
     // El botón "Add" se habilita → hacer click
     const addBtn = page.locator('[data-testid="playlist-add"]')
     await expect(addBtn).toBeEnabled({ timeout: 5000 })
     await addBtn.click()
+
+    // Extraer el ID de la canción desde el payload del POST
+    const addRequest = await addRequestPromise
+    const payload = addRequest.postDataJSON() as string[] | { ids: string[] } | { id: string }
+    const selectedSongId = Array.isArray(payload)
+      ? payload[0]
+      : 'ids' in payload
+        ? payload.ids[0]
+        : payload.id
+    expect(selectedSongId, 'La UI debe haber enviado un ID de canción válido en el payload').toBeTruthy()
 
     // Esperar que el diálogo se cierre
     await page.getByRole('dialog').waitFor({ state: 'hidden', timeout: 10000 })
@@ -308,11 +327,21 @@ test('FR-04: Permite agregar una canción a una playlist existente', async ({ pa
       'La canción debe aparecer en la vista de la playlist',
     ).toBeVisible({ timeout: 20000 })
 
-    // Verificar via API que la playlist ahora tiene al menos una canción
+    // Verificar via API que la playlist tiene la canción agregada
     const result = await subsonicCall(page, auth, 'getPlaylist', { id: playlistId })
     const entry = (result['playlist'] as { entry?: unknown })?.entry
-    const entries = entry ? (Array.isArray(entry) ? entry : [entry]) : []
+    const entries = entry ? (Array.isArray(entry) ? entry : [entry]) as SongEntry[] : []
     expect(entries.length, 'La playlist debe tener al menos una canción').toBeGreaterThanOrEqual(1)
+
+    // El ID en la playlist debe ser el mismo que la UI envió en el request
+    const addedSongId = entries[0].id
+    expect(addedSongId, 'El ID en la playlist debe coincidir con el enviado por la UI').toBe(selectedSongId)
+
+    // Verificar que ese ID existe en la biblioteca via getSong
+    const songResult = await subsonicCall(page, auth, 'getSong', { id: addedSongId })
+    const songData = songResult['song'] as SongEntry | undefined
+    expect(songData, 'El ID debe corresponder a una canción existente en la biblioteca').toBeDefined()
+    expect(songData!.id, 'El ID retornado por getSong debe coincidir').toBe(addedSongId)
   } finally {
     await deletePlaylistViaApi(page, auth, playlistId).catch(() => { })
   }
@@ -349,6 +378,15 @@ test('FR-05: Permite eliminar una canción de una playlist', async ({ page }) =>
     await page.locator('tbody tr').first().hover()
     await page.locator('tbody tr').first().locator('input[data-indeterminate]').click({ force: true })
 
+    // Registrar la captura del DELETE ANTES de hacer click en Remove
+    const removeRequestPromise = page.waitForRequest(
+      (req) =>
+        req.url().includes('/api/playlist/') &&
+        req.url().includes('/tracks') &&
+        req.method() === 'DELETE',
+      { timeout: 15000 },
+    )
+
     // Hacer click en el botón "Remove" de la barra bulk
     const removeBtn = page.getByRole('button', { name: /remove/i })
     await removeBtn.waitFor({ state: 'visible', timeout: 10000 })
@@ -361,6 +399,9 @@ test('FR-05: Permite eliminar una canción de una playlist', async ({ page }) =>
       await confirmBtn.click()
     }
 
+    // Verificar que la UI envió el DELETE al endpoint correcto
+    await removeRequestPromise
+
     // Verificar en la UI: ahora debe quedar exactamente 1 canción
     await expect(page.locator('tbody tr'), 'Debe quedar 1 canción tras eliminar la primera')
       .toHaveCount(1, { timeout: 15000 })
@@ -368,15 +409,16 @@ test('FR-05: Permite eliminar una canción de una playlist', async ({ page }) =>
     // Verificar via API que la playlist tiene exactamente 1 canción
     const result = await subsonicCall(page, auth, 'getPlaylist', { id: playlistId })
     const entry = (result['playlist'] as { entry?: unknown })?.entry
-    const remaining = entry ? (Array.isArray(entry) ? entry : [entry]) : []
+    const remaining = entry ? (Array.isArray(entry) ? entry : [entry]) as SongEntry[] : []
     expect(remaining, 'La API debe reportar exactamente 1 canción restante').toHaveLength(1)
 
-    // La canción eliminada ya no debe estar en la tabla (solo aplica si las canciones eran distintas)
+    // La canción eliminada (songList[0]) ya no debe estar en la playlist
+    const remainingIds = remaining.map((s) => s.id)
+    expect(remainingIds, 'La canción seleccionada debe haber sido eliminada').not.toContain(songList[0].id)
+
+    // Si las canciones eran distintas, la que quedó debe ser songList[1]
     if (songList.length >= 2 && songList[0].id !== songList[1].id) {
-      expect(
-        await page.locator('tbody').textContent(),
-        'El título de la canción eliminada no debe aparecer',
-      ).not.toContain(firstRowTitle?.trim())
+      expect(remainingIds, 'La canción no seleccionada debe permanecer en la playlist').toContain(songList[1].id)
     }
   } finally {
     await deletePlaylistViaApi(page, auth, playlistId).catch(() => { })
