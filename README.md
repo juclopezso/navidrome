@@ -91,6 +91,68 @@ SELECT * FROM user;   -- query data
 .quit                 -- exit
 ```
 
+## E2E Tests
+
+End-to-end tests use [Playwright](https://playwright.dev) and are located in `tests/e2e/`.
+
+### Prerequisites
+
+1. The app must be running on `http://localhost:4533` (see [Local Development](#local-development)).
+2. Install test dependencies (first time only):
+
+```bash
+cd tests/e2e
+npm install
+npx playwright install chromium
+```
+
+> **Arch Linux:** skip `npx playwright install chromium` and install the system browser instead:
+> ```bash
+> sudo pacman -S chromium
+> ```
+> The config already points to `/usr/bin/chromium`.
+
+### Test data
+
+The tests require specific songs to exist in the library. Create them with `ffmpeg` and trigger a scan:
+
+```bash
+mkdir -p music/"E2E Tests"
+
+for title in FR07-08 FR09-FAV FR09-NOFAV FR10-FAV-A FR10-FAV-B FR10-NOFAV-A FR10-NOFAV-B; do
+  ffmpeg -f lavfi -i "sine=frequency=440:duration=1" \
+    -metadata title="$title" -metadata artist="E2E Tests" -metadata album="E2E Tests" \
+    -q:a 9 "music/E2E Tests/$title.mp3" -y
+done
+
+curl -s "http://localhost:4533/rest/startScan?u=admin&p=admin&v=1.16.1&c=setup&f=json" > /dev/null
+```
+
+Wait a few seconds for the scan to finish before running the tests.
+
+### Running the tests
+
+```bash
+cd tests/e2e
+
+# All e2e tests
+npx playwright test
+
+# A specific test file
+npx playwright test 09.spec.ts
+npx playwright test 10.spec.ts
+
+# With visible browser
+npx playwright test 09.spec.ts --headed
+
+# With visible browser and slow motion (ms between actions)
+# Edit slowMo in playwright.config.ts, then run --headed
+npx playwright test 09.spec.ts --headed
+
+# HTML report (recorded after each run)
+npx playwright show-report
+```
+
 ## Installation
 
 See instructions on the [project's website](https://www.navidrome.org/docs/installation/)
