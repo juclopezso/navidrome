@@ -39,3 +39,11 @@ AGENTS.md
 openspec/
 go.work*
 .worktrees/
+
+# E2E tests
+tests/e2e/node_modules/
+tests/e2e/package-lock.json
+tests/e2e/test-results/
+node_modules/
+package-lock.json
+yarn.lock
