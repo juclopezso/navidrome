@@ -130,6 +130,14 @@ curl -s "http://localhost:4533/rest/startScan?u=admin&p=admin&v=1.16.1&c=setup&f
 
 Wait a few seconds for the scan to finish before running the tests.
 
+### Test coverage
+
+| File | Functional requirements | Description |
+|------|------------------------|-------------|
+| `07-08.spec.ts` | FR-07, FR-08 | Mark a song as favourite (star) and unmark it (unstar), verifying UI state and the Subsonic `getStarred2` API response |
+| `09.spec.ts` | FR-09 | Filter the song list by favourite status |
+| `10.spec.ts` | FR-10 | Sort songs by favourite status |
+
 ### Running the tests
 
 ```bash
@@ -139,15 +147,16 @@ cd tests/e2e
 npx playwright test
 
 # A specific test file
+npx playwright test 07-08.spec.ts
 npx playwright test 09.spec.ts
 npx playwright test 10.spec.ts
 
 # With visible browser
-npx playwright test 09.spec.ts --headed
+npx playwright test 07-08.spec.ts --headed
 
 # With visible browser and slow motion (ms between actions)
 # Edit slowMo in playwright.config.ts, then run --headed
-npx playwright test 09.spec.ts --headed
+npx playwright test 07-08.spec.ts --headed
 
 # HTML report (recorded after each run)
 npx playwright show-report
