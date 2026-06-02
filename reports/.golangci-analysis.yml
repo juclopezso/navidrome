@@ -1,0 +1,20 @@
+version: "2"
+
+run:
+  build-tags:
+    - netgo
+    - sqlite_fts5
+
+linters:
+  enable:
+    - cyclop
+    - funlen
+    - gocognit
+  settings:
+    cyclop:
+      max-complexity: 10
+    funlen:
+      lines: 30
+      statements: 25
+    gocognit:
+      min-complexity: 10
