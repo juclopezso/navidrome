@@ -16,6 +16,7 @@ import AmusicTheme from './amusic'
 import SquiddiesGlassTheme from './SquiddiesGlass'
 import NautilineTheme from './nautiline'
 import Neon from './neon'
+import LightBlueTheme from './lightBlue'
 
 export default {
   // Classic default themes
@@ -31,6 +32,7 @@ export default {
   GreenTheme,
   GruvboxDarkTheme,
   LigeraTheme,
+  LightBlueTheme,
   MonokaiTheme,
   NautilineTheme,
   Neon,

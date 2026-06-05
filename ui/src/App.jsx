@@ -36,6 +36,7 @@ import {
   transcodingReducer,
 } from './reducers'
 import createAdminStore from './store/createAdminStore'
+import { setStore } from './store'
 import { i18nProvider } from './i18n'
 import config, { shareInfo } from './config'
 import { keyMap } from './hotkeys'
@@ -76,6 +77,7 @@ const adminStore = createAdminStore({
     transcoding: transcodingReducer,
   },
 })
+setStore(adminStore)
 
 const App = () => (
   <Provider store={adminStore}>

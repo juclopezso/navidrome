@@ -75,6 +75,7 @@ func buildAuthPayload(user *model.User) map[string]any {
 		"username": user.UserName,
 		"isAdmin":  user.IsAdmin,
 	}
+	payload["theme"] = user.Theme
 	if user.AvatarPath != "" {
 		payload["avatar"] = conf.Server.BasePath + "/api/user/" + user.ID + "/image"
 	} else if conf.Server.EnableGravatar && user.Email != "" {

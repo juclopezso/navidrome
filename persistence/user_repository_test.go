@@ -69,6 +69,29 @@ var _ = Describe("UserRepository", func() {
 			Expect(err).ToNot(HaveOccurred())
 			Expect(actual.Password).To(Equal("newpass"))
 		})
+		It("persists and retrieves the theme field", func() {
+			usr.Theme = "LightBlueTheme"
+			usr.NewPassword = ""
+			Expect(repo.Put(&usr)).To(BeNil())
+
+			actual, err := repo.Get("123")
+			Expect(err).ToNot(HaveOccurred())
+			Expect(actual.Theme).To(Equal("LightBlueTheme"))
+		})
+		It("stores empty theme by default", func() {
+			noThemeUser := model.User{
+				ID:          "456",
+				UserName:    "notheme",
+				Name:        "No Theme",
+				NewPassword: "pass",
+				IsAdmin:     false,
+			}
+			Expect(repo.Put(&noThemeUser)).To(BeNil())
+
+			actual, err := repo.Get("456")
+			Expect(err).ToNot(HaveOccurred())
+			Expect(actual.Theme).To(Equal(""))
+		})
 	})
 
 	Describe("validatePasswordChange", func() {

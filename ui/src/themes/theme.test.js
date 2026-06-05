@@ -12,3 +12,21 @@ describe('NDPlaylistDetails styles', () => {
     },
   )
 })
+
+describe('LightBlueTheme', () => {
+  it('is registered in the themes index', () => {
+    expect(themes.LightBlueTheme).toBeDefined()
+  })
+
+  it('has the correct themeName', () => {
+    expect(themes.LightBlueTheme.themeName).toBe('Light Blue')
+  })
+
+  it('uses light palette type', () => {
+    expect(themes.LightBlueTheme.palette.type).toBe('light')
+  })
+
+  it('uses light player theme', () => {
+    expect(themes.LightBlueTheme.player.theme).toBe('light')
+  })
+})

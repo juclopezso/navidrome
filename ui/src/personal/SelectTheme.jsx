@@ -1,5 +1,6 @@
-import { SelectInput, useTranslate } from 'react-admin'
+import { SelectInput, useDataProvider, useTranslate } from 'react-admin'
 import { useDispatch, useSelector } from 'react-redux'
+import { useCallback, useEffect, useRef } from 'react'
 import { AUTO_THEME_ID } from '../consts'
 import themes from '../themes'
 import { HelpMsg } from './HelpMsg'
@@ -11,7 +12,19 @@ const helpKey = '_help'
 export const SelectTheme = (props) => {
   const translate = useTranslate()
   const dispatch = useDispatch()
+  const dataProvider = useDataProvider()
   const currentTheme = useSelector((state) => state.theme)
+  const userRecordRef = useRef(null)
+
+  const userId = localStorage.getItem('userId')
+
+  useEffect(() => {
+    if (!userId) return
+    dataProvider.getOne('user', { id: userId }).then(({ data }) => {
+      userRecordRef.current = data
+    })
+  }, [dataProvider, userId])
+
   const themeChoices = [
     {
       id: AUTO_THEME_ID,
@@ -27,6 +40,26 @@ export const SelectTheme = (props) => {
     id: helpKey,
     name: <HelpMsg caption={'Create your own'} />,
   })
+
+  const handleChange = useCallback(
+    (event) => {
+      const themeId = event.target.value
+      if (themeId === helpKey) {
+        openInNewTab(docsUrl('/docs/developers/creating-themes/'))
+        return
+      }
+      dispatch(changeTheme(themeId))
+      if (userId && userRecordRef.current) {
+        dataProvider.update('user', {
+          id: userId,
+          data: { ...userRecordRef.current, theme: themeId },
+          previousData: userRecordRef.current,
+        })
+      }
+    },
+    [dispatch, dataProvider, userId],
+  )
+
   return (
     <SelectInput
       {...props}
@@ -35,13 +68,7 @@ export const SelectTheme = (props) => {
       defaultValue={currentTheme}
       translateChoice={false}
       choices={themeChoices}
-      onChange={(event) => {
-        if (event.target.value === helpKey) {
-          openInNewTab(docsUrl('/docs/developers/creating-themes/'))
-          return
-        }
-        dispatch(changeTheme(event.target.value))
-      }}
+      onChange={handleChange}
     />
   )
 }

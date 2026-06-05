@@ -17,6 +17,7 @@ type User struct {
 	CreatedAt    time.Time  `structs:"created_at" json:"createdAt"`
 	UpdatedAt    time.Time  `structs:"updated_at" json:"updatedAt"`
 	AvatarPath   string     `structs:"avatar_path" json:"avatarPath,omitempty"`
+	Theme        string     `structs:"theme" json:"theme"`
 
 	// Library associations (many-to-many relationship)
 	Libraries Libraries `structs:"-" json:"libraries,omitempty"`

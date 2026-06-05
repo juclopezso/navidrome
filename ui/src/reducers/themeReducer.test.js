@@ -29,4 +29,25 @@ describe('themeReducer', () => {
       expect(result).toBe(expected)
     },
   )
+
+  it('applies CHANGE_THEME action to update the theme', async () => {
+    vi.doMock('../config', () => ({
+      default: { defaultTheme: 'Dark' },
+    }))
+    const { themeReducer } = await import('./themeReducer')
+    const result = themeReducer('DarkTheme', {
+      type: 'CHANGE_THEME',
+      payload: 'LightBlueTheme',
+    })
+    expect(result).toBe('LightBlueTheme')
+  })
+
+  it('retains current theme for unknown actions', async () => {
+    vi.doMock('../config', () => ({
+      default: { defaultTheme: 'Dark' },
+    }))
+    const { themeReducer } = await import('./themeReducer')
+    const result = themeReducer('NordTheme', { type: 'UNKNOWN' })
+    expect(result).toBe('NordTheme')
+  })
 })

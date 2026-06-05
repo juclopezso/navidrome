@@ -2,6 +2,8 @@ import { jwtDecode } from 'jwt-decode'
 import { baseUrl } from './utils'
 import config from './config'
 import { removeHomeCache } from './utils/removeHomeCache'
+import { getStore } from './store'
+import { changeTheme } from './actions'
 
 // config sent from server may contain authentication info, for example when the user is authenticated
 // by a reverse proxy request header
@@ -24,6 +26,10 @@ function storeAuthenticationInfo(authInfo) {
   localStorage.setItem('subsonic-salt', authInfo.subsonicSalt)
   localStorage.setItem('subsonic-token', authInfo.subsonicToken)
   localStorage.setItem('is-authenticated', 'true')
+  const store = getStore()
+  if (store) {
+    store.dispatch(changeTheme(authInfo.theme || 'DarkTheme'))
+  }
 }
 
 const authProvider = {
