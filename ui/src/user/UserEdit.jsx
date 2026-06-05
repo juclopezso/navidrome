@@ -23,6 +23,7 @@ import {
 import { Typography } from '@material-ui/core'
 import { Title } from '../common'
 import DeleteUserButton from './DeleteUserButton'
+import UserAvatar from './UserAvatar'
 import { LibrarySelectionField } from './LibrarySelectionField.jsx'
 import { validateUserForm } from './userValidation'
 
@@ -117,6 +118,7 @@ const UserEdit = (props) => {
         save={save}
         validate={validateForm}
       >
+        <UserAvatar />
         {permissions === 'admin' && (
           <TextInput
             spellCheck={false}

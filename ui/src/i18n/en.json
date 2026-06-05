@@ -559,12 +559,12 @@
     }
   },
   "message": {
-    "uploadCover": "Upload Cover",
-    "removeCover": "Remove Cover",
-    "coverUploaded": "Cover art updated",
-    "coverRemoved": "Cover art removed",
-    "coverUploadError": "Error uploading cover art",
-    "coverRemoveError": "Error removing cover art",
+    "uploadCover": "Upload image",
+    "removeCover": "Remove image",
+    "coverUploaded": "Image updated",
+    "coverRemoved": "Image removed",
+    "coverUploadError": "Error uploading image",
+    "coverRemoveError": "Error removing image",
     "note": "NOTE",
     "transcodingDisabled": "Changing the transcoding configuration through the web interface is disabled for security reasons. If you would like to change (edit or add) transcoding options, restart the server with the %{config} configuration option.",
     "transcodingEnabled": "Navidrome is currently running with %{config}, making it possible to run system commands from the transcoding settings using the web interface. We recommend to disable it for security reasons and only enable it when configuring Transcoding options.",

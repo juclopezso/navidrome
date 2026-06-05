@@ -592,12 +592,12 @@
     "noSimilarSongsFound": "No se encontraron canciones similares",
     "noTopSongsFound": "No se encontraron canciones destacadas",
     "startingInstantMix": "Cargando la mezcla instantánea...",
-    "uploadCover": "Subir portada",
-    "removeCover": "Eliminar portada",
-    "coverUploaded": "Portada actualizada",
-    "coverRemoved": "Portada eliminada",
-    "coverUploadError": "Error al subir la portada",
-    "coverRemoveError": "Error al eliminar la portada"
+    "uploadCover": "Subir imagen",
+    "removeCover": "Eliminar imagen",
+    "coverUploaded": "Imagen actualizada",
+    "coverRemoved": "Imagen eliminada",
+    "coverUploadError": "Error al subir la imagen",
+    "coverRemoveError": "Error al eliminar la imagen"
   },
   "menu": {
     "library": "Biblioteca",

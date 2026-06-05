@@ -113,6 +113,7 @@ const (
 	EntityArtist   = "artist"
 	EntityPlaylist = "playlist"
 	EntityRadio    = "radio"
+	EntityUser     = "user"
 )
 
 const (

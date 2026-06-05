@@ -1,0 +1,5 @@
+-- +goose Up
+ALTER TABLE user ADD COLUMN avatar_path VARCHAR(255) NOT NULL DEFAULT '';
+
+-- +goose Down
+ALTER TABLE user DROP COLUMN avatar_path;

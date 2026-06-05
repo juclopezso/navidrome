@@ -2,6 +2,8 @@ package model
 
 import (
 	"time"
+
+	"github.com/navidrome/navidrome/consts"
 )
 
 type User struct {
@@ -14,6 +16,7 @@ type User struct {
 	LastAccessAt *time.Time `structs:"last_access_at" json:"lastAccessAt"`
 	CreatedAt    time.Time  `structs:"created_at" json:"createdAt"`
 	UpdatedAt    time.Time  `structs:"updated_at" json:"updatedAt"`
+	AvatarPath   string     `structs:"avatar_path" json:"avatarPath,omitempty"`
 
 	// Library associations (many-to-many relationship)
 	Libraries Libraries `structs:"-" json:"libraries,omitempty"`
@@ -25,6 +28,10 @@ type User struct {
 	NewPassword string `structs:"password,omitempty" json:"password,omitempty"` //nolint:gosec
 	// If changing the password, this is also required
 	CurrentPassword string `structs:"current_password,omitempty" json:"currentPassword,omitempty"`
+}
+
+func (u User) AvatarImagePath() string {
+	return UploadedImagePath(consts.EntityUser, u.AvatarPath)
 }
 
 func (u User) HasLibraryAccess(libraryID int) bool {

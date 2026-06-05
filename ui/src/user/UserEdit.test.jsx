@@ -71,6 +71,11 @@ vi.mock('./DeleteUserButton', () => ({
   default: () => <button data-testid="delete-user-button">Delete</button>,
 }))
 
+vi.mock('./UserAvatar', () => ({
+  __esModule: true,
+  default: () => <div data-testid="user-avatar" />,
+}))
+
 vi.mock('../common', () => ({
   Title: ({ subTitle }) => <div data-testid="title">{subTitle}</div>,
 }))
