@@ -109,9 +109,11 @@ const UserAvatar = () => {
           headers: new Headers({}),
           body: formData,
         })
+        const newUrl = `${REST_URL}/user/${userId}/image?v=${Date.now()}`
         setLocalAvatarPath(file.name)
         setAvatarVersion((v) => v + 1)
-        localStorage.setItem('avatar', `${REST_URL}/user/${userId}/image`)
+        localStorage.setItem('avatar', newUrl)
+        window.dispatchEvent(new CustomEvent('nd:avatarChanged', { detail: { url: newUrl } }))
         notify('message.coverUploaded', { type: 'success' })
       } catch {
         notify('message.coverUploadError', { type: 'warning' })
@@ -131,6 +133,7 @@ const UserAvatar = () => {
         })
         setLocalAvatarPath(null)
         localStorage.setItem('avatar', '')
+        window.dispatchEvent(new CustomEvent('nd:avatarChanged', { detail: { url: '' } }))
         notify('message.coverRemoved', { type: 'success' })
       } catch {
         notify('message.coverRemoveError', { type: 'warning' })

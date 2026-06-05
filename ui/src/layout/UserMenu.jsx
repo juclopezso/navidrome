@@ -55,7 +55,28 @@ const UserMenu = (props) => {
   const { loaded, identity } = useGetIdentity()
   const classes = useStyles(props)
   const dispatch = useDispatch()
-  const avatarBlobUrl = useAuthenticatedBlobUrl(loaded ? identity?.avatar : null)
+
+  // currentAvatarUrl tracks the avatar independently of the identity cache,
+  // so it updates immediately when the user uploads or deletes their photo.
+  const [currentAvatarUrl, setCurrentAvatarUrl] = useState(
+    () => localStorage.getItem('avatar') || '',
+  )
+
+  // Sync from identity on initial load (covers login and Gravatar case)
+  useEffect(() => {
+    if (loaded) {
+      setCurrentAvatarUrl(identity?.avatar || '')
+    }
+  }, [loaded, identity?.avatar])
+
+  // Listen for avatar changes dispatched by UserAvatar after upload/delete
+  useEffect(() => {
+    const handler = (e) => setCurrentAvatarUrl(e.detail?.url || '')
+    window.addEventListener('nd:avatarChanged', handler)
+    return () => window.removeEventListener('nd:avatarChanged', handler)
+  }, [])
+
+  const avatarBlobUrl = useAuthenticatedBlobUrl(currentAvatarUrl || null)
 
   const { children, label, icon, logout } = props
 
