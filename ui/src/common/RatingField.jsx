@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import Rating from '@material-ui/lab/Rating'
 import { makeStyles } from '@material-ui/core/styles'
 import { isDateSet } from '../utils/validations'
-import StarBorderIcon from '@material-ui/icons/StarBorder'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import clsx from 'clsx'
 import { useRating } from './useRating'
 import { useRecordContext } from 'react-admin'
@@ -64,7 +65,8 @@ export const RatingField = ({
         value={rating}
         size={size}
         disabled={record?.missing}
-        emptyIcon={<StarBorderIcon fontSize="inherit" />}
+        icon={<FavoriteIcon fontSize="inherit" />}
+        emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
         onChange={(e, newValue) => handleRating(e, newValue)}
       />
     </span>

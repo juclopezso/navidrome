@@ -15,8 +15,8 @@ import {
   usePermissions,
 } from 'react-admin'
 import { useMediaQuery, withWidth } from '@material-ui/core'
-import FavoriteIcon from '@material-ui/icons/Favorite'
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import StarIcon from '@material-ui/icons/Star'
+import StarBorderIcon from '@material-ui/icons/StarBorder'
 import { makeStyles } from '@material-ui/core/styles'
 import { useDrag } from 'react-dnd'
 import clsx from 'clsx'
@@ -89,7 +89,7 @@ const ArtistFilter = (props) => {
       {config.enableFavourites && (
         <NullableBooleanInput
           source="starred"
-          label={<FavoriteIcon fontSize={'small'} />}
+          label={<StarIcon fontSize={'small'} />}
         />
       )}
       {isAdmin && <NullableBooleanInput source="missing" />}
@@ -194,7 +194,7 @@ const ArtistListView = ({ hasShow, hasEdit, hasList, width, ...rest }) => {
         className={classes.contextMenu}
         label={
           config.enableFavourites && (
-            <FavoriteBorderIcon
+            <StarBorderIcon
               fontSize={'small'}
               className={classes.contextHeader}
             />

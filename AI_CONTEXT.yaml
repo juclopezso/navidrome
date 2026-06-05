@@ -1,0 +1,266 @@
+## AI_CONTEXT.yaml — Navidrome
+## Generated: 2026-06-04. Verify specific paths/symbols against current code.
+
+project:
+  name: Navidrome
+  description: Self-hosted personal music server and web player
+  license: GPL-3.0
+  version_strategy: injected at build time via ldflags (consts.gitTag / consts.gitSha)
+
+business_domain:
+  summary: >
+    Personal music streaming server. Manages music libraries on disk (multi-library
+    support), provides a Subsonic/OpenSubsonic-compatible API for third-party clients,
+    and ships a built-in React Progressive Web App. Multi-user with per-user favorites,
+    ratings, playlists, play queues, bookmarks, and scrobbling.
+  entities:
+    - User (admin / regular)
+    - Library (music folder root)
+    - MediaFile (track)
+    - Album
+    - Artist
+    - Genre / Tag
+    - Annotation (star, rating, play count — polymorphic per user)
+    - Playlist (manual + smart/criteria-based)
+    - PlayQueue
+    - Bookmark
+    - Share (public share link)
+    - Player (client registration)
+    - Transcoding (profile)
+    - Plugin (Wasm)
+    - Radio (internet radio station)
+
+tech_stack:
+  backend:
+    language: Go
+    version: "1.26"
+    http_router: go-chi/chi v5
+    di_framework: google/wire (compile-time code generation)
+    query_builder: Masterminds/squirrel
+    db_scanner: pocketbase/dbx
+    config: spf13/viper + pelletier/go-toml v2
+    logging: sirupsen/logrus (wrapped in log/)
+    auth: go-chi/jwtauth v5 (HS256 JWT)
+    jwt_library: lestrrat-go/jwx v3
+    plugin_runtime: extism/go-sdk + tetratelabs/wazero (WebAssembly)
+    media_tagging: go.senan.xyz/taglib (custom fork)
+    transcoding: FFmpeg (external binary)
+    jukebox: MPV (external binary) via dexterlb/mpvipc
+    scheduler: robfig/cron v3
+    metrics: prometheus/client_golang
+    security_headers: unrolled/secure
+    html_sanitizer: microcosm-cc/bluemonday
+    image_processing: golang.org/x/image, gen2brain/webp
+    http_cache: djherbis/fscache
+    testing: onsi/ginkgo v2 + onsi/gomega
+    build_tags_required: [netgo, sqlite_fts5]
+
+  frontend:
+    language: JavaScript (JSX), TypeScript (type declarations)
+    framework: react-admin v3
+    react_version: "17"
+    ui_library: "@material-ui/core v4"
+    state: Redux + redux-saga
+    audio_player: navidrome-music-player 4.25.2
+    build_tool: Vite 7
+    test_framework: Vitest 4
+    test_helpers: "@testing-library/react v12"
+    pwa: vite-plugin-pwa + Workbox
+    routing: react-router-dom v5
+
+  database:
+    engine: SQLite
+    driver: mattn/go-sqlite3 (CGO)
+    features: [WAL mode, foreign keys, FTS5 full-text search]
+    migrations: pressly/goose v3
+    migration_dir: db/migrations/
+
+  infrastructure:
+    containerization: Docker
+    dev_compose: docker-compose.dev.yml
+    ci_cd: GitHub Actions (.github/workflows/pipeline.yml)
+    hot_reload_backend: cespare/reflex
+    supported_platforms:
+      - linux/amd64
+      - linux/arm64
+      - linux/arm/v5
+      - linux/arm/v6
+      - linux/arm/v7
+      - linux/386
+      - linux/riscv64
+      - darwin/amd64
+      - darwin/arm64
+      - windows/amd64
+
+architecture:
+  style: Modular Monolith
+  deployment_unit: single Go binary (embeds compiled frontend)
+  layers:
+    - name: HTTP
+      path: server/
+      description: chi router, middleware (auth, CORS, rate-limit, logging, security headers)
+    - name: API
+      paths: [server/subsonic/, server/nativeapi/, server/public/]
+      description: Subsonic/OpenSubsonic handlers, native JSON REST, public share routes
+    - name: Core/Business Logic
+      path: core/
+      description: Pure domain services (streaming, artwork, playlists, scrobbling, etc.)
+    - name: Domain Model
+      path: model/
+      description: Interfaces (DataStore, all Repository interfaces) + domain structs
+    - name: Persistence
+      path: persistence/
+      description: SQLite implementations of all repository interfaces
+    - name: Adapters
+      path: adapters/
+      description: External HTTP clients (Last.fm, ListenBrainz, Deezer)
+    - name: Scanner
+      path: scanner/
+      description: 4-phase filesystem scanner
+    - name: Plugins
+      path: plugins/
+      description: Wasm plugin host + built-in plugin implementations
+  communication:
+    internal: direct function calls (DI-injected interfaces)
+    real_time: Server-Sent Events (server/events/)
+    plugin_callbacks: WebSocket
+    transcoding: FFmpeg subprocess
+    jukebox: MPV Unix socket IPC
+
+api:
+  subsonic:
+    base_path: /rest/
+    version: "1.16.1"
+    formats: [XML, JSON]
+    auth: JWT cookie OR Subsonic MD5 token (u/p/t/s query params)
+    key_endpoints:
+      browsing: [getArtists, getArtist, getAlbum, getSong, search3]
+      streaming: [stream, download, getCoverArt, getLyricsBySongId]
+      annotation: [star, unstar, setRating, scrobble]
+      playlists: [getPlaylists, createPlaylist, updatePlaylist, deletePlaylist]
+      queue: [getPlayQueue, savePlayQueue]
+      scan: [startScan, getScanStatus]
+      users: [getUsers, createUser, updateUser, deleteUser]
+      jukebox: [jukeboxControl]
+  native_rest:
+    base_path: /api/
+    protocol: react-admin JSON-server
+    auth: JWT (X-ND-Authorization header or cookie)
+    resources:
+      - song
+      - album
+      - artist
+      - genre
+      - user
+      - player
+      - transcoding
+      - share
+      - playlist
+      - radio
+      - tag
+      - translation
+    special_endpoints:
+      - /api/scan
+      - /api/library
+      - /api/maintenance
+      - /api/insights
+      - /api/plugin
+      - /api/imageUpload
+  auth_endpoints:
+    base_path: /auth/
+    routes: [login, logout, lastfmCallback]
+  public_endpoints:
+    base_path: /share/
+    description: Unauthenticated share player
+
+key_files:
+  di_entrypoint: cmd/wire_injectors.go
+  di_generated: cmd/wire_gen.go  # DO NOT edit manually; run `make gen`
+  datastore_interface: model/datastore.go
+  subsonic_router: server/subsonic/api.go
+  native_api_router: server/nativeapi/native_api.go
+  server_bootstrap: server/server.go
+  config_struct: conf/configuration.go
+  constants: consts/consts.go
+  scanner_entrypoint: scanner/controller.go
+  stream_entrypoint: core/stream/media_streamer.go
+  frontend_entry: ui/src/App.jsx
+  data_provider: ui/src/dataProvider/index.js
+  vite_config: ui/vite.config.js
+
+testing:
+  go:
+    framework: Ginkgo v2 + Gomega
+    pattern: BDD (Describe / Context / It / BeforeEach)
+    suite_file_pattern: "*_suite_test.go"
+    mocks_location: tests/
+    persistence_tests: persistence/*_test.go (real SQLite in-memory)
+    server_e2e: server/e2e/ (full Subsonic scenario tests)
+    persistence_e2e: persistence/e2e/
+    race_detection: true (CI only, flag -race -shuffle=on)
+  javascript:
+    framework: Vitest 4
+    helpers: "@testing-library/react v12"
+    location: co-located *.test.jsx or *.test.js
+    coverage_tool: "@vitest/coverage-v8"
+  commands:
+    go_tests: make test
+    js_tests: make test-js
+    all_tests: make testall
+    watch: make watch
+    race: make test-race
+
+dev_environment:
+  docker_compose_file: docker-compose.dev.yml
+  services:
+    backend:
+      port: 4633
+      hot_reload: reflex
+      credentials: admin/admin (via ND_DEVAUTOCREATEADMINPASSWORD)
+    frontend:
+      port: 4533
+      hot_reload: Vite HMR
+      note: open this in browser; proxies /auth, /api, /rest, /backgrounds to backend
+    frontend_test:
+      profile: test
+      command: npm test
+  commands:
+    start: docker compose -f docker-compose.dev.yml up --build
+    stop: docker compose -f docker-compose.dev.yml down
+    backend_logs: docker compose -f docker-compose.dev.yml logs -f backend
+    db_inspect: sqlite3 ./data/navidrome.db
+  no_docker:
+    setup: make setup
+    dev: make dev
+
+security:
+  jwt_algorithm: HS256
+  jwt_secret_storage: encrypted in SQLite properties table
+  session_timeout: 48h (default)
+  password_storage: AES-reversible encryption (required by Subsonic MD5 challenge)
+  http_security_headers: unrolled/secure middleware
+  cors: go-chi/cors (configurable origins)
+  rate_limiting: /auth/login only
+  html_sanitization: bluemonday on user content
+  known_risk: DefaultEncryptionKey is public — must set PasswordEncryptionKey in production
+
+constraints:
+  - SQLite only — no Postgres or MySQL support
+  - CGO required (mattn/go-sqlite3) — needs C toolchain for compilation
+  - Frontend must be built before Go binary (ui/build/ must exist)
+  - Wire-generated code must be regenerated after DI changes: make gen
+  - Go build tags netgo,sqlite_fts5 required for all builds
+  - FFmpeg is optional but required for transcoding and format probing
+  - React 17 + react-admin v3 + Material-UI v4 are outdated (not latest)
+
+common_commands:
+  setup: make setup
+  dev_local: make dev
+  dev_docker: docker compose -f docker-compose.dev.yml up --build
+  build: make build
+  test_all: make testall
+  lint: make lint
+  regenerate_wire: make gen
+  run_single_package: "make test PKG=./server/..."
+  db_shell_host: sqlite3 ./data/navidrome.db
+  db_shell_container: docker compose -f docker-compose.dev.yml exec backend sqlite3 /data/navidrome.db

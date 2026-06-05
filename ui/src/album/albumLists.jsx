@@ -34,8 +34,8 @@ const albumLists = {
       icon: (
         <DynamicMenuIcon
           path={'album/starred'}
-          icon={FavoriteBorderIcon}
-          activeIcon={FavoriteIcon}
+          icon={StarBorderIcon}
+          activeIcon={StarIcon}
         />
       ),
       params: 'sort=starred_at&order=DESC&filter={"starred":true}',
@@ -46,8 +46,8 @@ const albumLists = {
       icon: (
         <DynamicMenuIcon
           path={'album/topRated'}
-          icon={StarBorderIcon}
-          activeIcon={StarIcon}
+          icon={FavoriteBorderIcon}
+          activeIcon={FavoriteIcon}
         />
       ),
       params: 'sort=rating&order=DESC&filter={"has_rating":true}',

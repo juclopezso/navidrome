@@ -16,7 +16,7 @@ import {
   useTranslate,
   useVersion,
 } from 'react-admin'
-import FavoriteIcon from '@material-ui/icons/Favorite'
+import StarIcon from '@material-ui/icons/Star'
 import { withWidth } from '@material-ui/core'
 import {
   List,
@@ -153,7 +153,7 @@ const AlbumFilter = (props) => {
       {config.enableFavourites && (
         <NullableBooleanInput
           source="starred"
-          label={<FavoriteIcon fontSize={'small'} />}
+          label={<StarIcon fontSize={'small'} />}
         />
       )}
       {isAdmin && <NullableBooleanInput source="missing" />}

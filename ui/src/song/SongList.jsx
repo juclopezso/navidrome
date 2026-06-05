@@ -12,7 +12,7 @@ import {
   usePermissions,
 } from 'react-admin'
 import { useMediaQuery } from '@material-ui/core'
-import FavoriteIcon from '@material-ui/icons/Favorite'
+import StarIcon from '@material-ui/icons/Star'
 import {
   DateField,
   DurationField,
@@ -29,7 +29,7 @@ import {
 } from '../common'
 import { useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import StarBorderIcon from '@material-ui/icons/StarBorder'
 import { setTrack } from '../actions'
 import { SongListActions } from './SongListActions'
 import { AlbumLinkField } from './AlbumLinkField'
@@ -120,7 +120,7 @@ const SongFilter = (props) => {
       {config.enableFavourites && (
         <NullableBooleanInput
           source="starred"
-          label={<FavoriteIcon fontSize={'small'} />}
+          label={<StarIcon fontSize={'small'} />}
         />
       )}
       {isAdmin && <NullableBooleanInput source="missing" />}
@@ -232,7 +232,7 @@ const SongList = (props) => {
               className={classes.contextMenu}
               label={
                 config.enableFavourites && (
-                  <FavoriteBorderIcon
+                  <StarBorderIcon
                     fontSize={'small'}
                     className={classes.contextHeader}
                   />

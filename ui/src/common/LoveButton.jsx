@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import FavoriteIcon from '@material-ui/icons/Favorite'
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import StarIcon from '@material-ui/icons/Star'
+import StarBorderIcon from '@material-ui/icons/StarBorder'
 import IconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
@@ -67,9 +67,9 @@ export const LoveButton = ({
       {...rest}
     >
       {record.starred ? (
-        <FavoriteIcon fontSize={size} />
+        <StarIcon fontSize={size} />
       ) : (
-        <FavoriteBorderIcon fontSize={size} />
+        <StarBorderIcon fontSize={size} />
       )}
     </Button>
   )
