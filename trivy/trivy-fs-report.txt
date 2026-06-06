@@ -1,0 +1,155 @@
+
+Report Summary
+
+┌─────────────────────────────────────────────────┬───────┬─────────────────┬─────────┐
+│                     Target                      │ Type  │ Vulnerabilities │ Secrets │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ go.mod                                          │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/cmd/ndpgen/go.mod                       │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/examples/crypto-ticker/go.mod           │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/examples/minimal/go.mod                 │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/examples/wikimedia/go.mod               │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/pdk/go/go.mod                           │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/pdk/rust/nd-pdk-host/Cargo.lock         │ cargo │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/partial-metadata-agent/go.mod  │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-artwork/go.mod            │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-cache-plugin/go.mod       │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-config/go.mod             │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-kvstore/go.mod            │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-library/go.mod            │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-lyrics/go.mod             │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-metadata-agent/go.mod     │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-scheduler/go.mod          │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-scrobbler/go.mod          │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-sonic-similarity/go.mod   │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-subsonicapi-plugin/go.mod │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-taskqueue/go.mod          │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-users/go.mod              │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ plugins/testdata/test-websocket/go.mod          │ gomod │        0        │    -    │
+├─────────────────────────────────────────────────┼───────┼─────────────────┼─────────┤
+│ ui/package-lock.json                            │  npm  │       23        │    -    │
+└─────────────────────────────────────────────────┴───────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+ui/package-lock.json (npm)
+==========================
+Total: 23 (UNKNOWN: 0, LOW: 1, MEDIUM: 16, HIGH: 6, CRITICAL: 0)
+
+┌──────────────────────────────────────────┬─────────────────────┬──────────┬────────┬───────────────────┬────────────────────────┬──────────────────────────────────────────────────────────────┐
+│                 Library                  │    Vulnerability    │ Severity │ Status │ Installed Version │     Fixed Version      │                            Title                             │
+├──────────────────────────────────────────┼─────────────────────┼──────────┼────────┼───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ @babel/plugin-transform-modules-systemjs │ CVE-2026-44728      │ HIGH     │ fixed  │ 7.29.0            │ 7.29.4, 8.0.0-alpha.13 │ Babel is a compiler for writing next generation JavaScript.  │
+│                                          │                     │          │        │                   │                        │ From 7.12. ......                                            │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-44728                   │
+├──────────────────────────────────────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ brace-expansion                          │ CVE-2026-45149      │ MEDIUM   │        │ 5.0.5             │ 5.0.6                  │ The brace-expansion library generates arbitrary strings      │
+│                                          │                     │          │        │                   │                        │ containing a c ...                                           │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-45149                   │
+├──────────────────────────────────────────┼─────────────────────┤          │        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ dompurify                                │ CVE-2025-26791      │          │        │ 2.5.9             │ 3.2.4                  │ dompurify: Mutation XSS in DOMPurify Due to Improper         │
+│                                          │                     │          │        │                   │                        │ Template Literal Handling                                    │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-26791                   │
+│                                          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                          │ CVE-2026-41239      │          │        │                   │ 3.4.0                  │ DOMPurify: Vue 2: DOMPurify: Cross-site scripting due to     │
+│                                          │                     │          │        │                   │                        │ incomplete sanitization of template...                       │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-41239                   │
+│                                          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│                                          │ CVE-2026-41240      │          │        │                   │                        │ DOMPurify: DOMPurify: Cross-Site Scripting (XSS) via         │
+│                                          │                     │          │        │                   │                        │ inconsistent tag sanitization                                │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-41240                   │
+│                                          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│                                          │ GHSA-39q2-94rc-95cp │          │        │                   │                        │ DOMPurify's ADD_TAGS function form bypasses FORBID_TAGS due  │
+│                                          │                     │          │        │                   │                        │ to short-circuit evaluation                                  │
+│                                          │                     │          │        │                   │                        │ https://github.com/advisories/GHSA-39q2-94rc-95cp            │
+│                                          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                          │ GHSA-cj63-jhhr-wcxv │          │        │                   │ 3.3.2                  │ DOMPurify USE_PROFILES prototype pollution allows event      │
+│                                          │                     │          │        │                   │                        │ handlers                                                     │
+│                                          │                     │          │        │                   │                        │ https://github.com/advisories/GHSA-cj63-jhhr-wcxv            │
+│                                          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│                                          │ GHSA-cjmm-f4jc-qw8r │          │        │                   │                        │ DOMPurify ADD_ATTR predicate skips URI validation            │
+│                                          │                     │          │        │                   │                        │ https://github.com/advisories/GHSA-cjmm-f4jc-qw8r            │
+│                                          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│                                          │ GHSA-h8r8-wccr-v5f2 │          │        │                   │                        │ DOMPurify is vulnerable to mutation-XSS via                  │
+│                                          │                     │          │        │                   │                        │ Re-Contextualization                                         │
+│                                          │                     │          │        │                   │                        │ https://github.com/advisories/GHSA-h8r8-wccr-v5f2            │
+│                                          ├─────────────────────┤          │        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                          │ CVE-2026-41238      │          │        │ 3.3.3             │ 3.4.0                  │ DOMPurify: DOMPurify: Cross-Site Scripting bypass via        │
+│                                          │                     │          │        │                   │                        │ prototype pollution                                          │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-41238                   │
+│                                          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│                                          │ CVE-2026-41239      │          │        │                   │                        │ DOMPurify: Vue 2: DOMPurify: Cross-site scripting due to     │
+│                                          │                     │          │        │                   │                        │ incomplete sanitization of template...                       │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-41239                   │
+│                                          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│                                          │ CVE-2026-41240      │          │        │                   │                        │ DOMPurify: DOMPurify: Cross-Site Scripting (XSS) via         │
+│                                          │                     │          │        │                   │                        │ inconsistent tag sanitization                                │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-41240                   │
+│                                          ├─────────────────────┤          │        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│                                          │ GHSA-39q2-94rc-95cp │          │        │                   │                        │ DOMPurify's ADD_TAGS function form bypasses FORBID_TAGS due  │
+│                                          │                     │          │        │                   │                        │ to short-circuit evaluation                                  │
+│                                          │                     │          │        │                   │                        │ https://github.com/advisories/GHSA-39q2-94rc-95cp            │
+├──────────────────────────────────────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ fast-uri                                 │ CVE-2026-6321       │ HIGH     │        │ 3.1.0             │ 3.1.1                  │ fast-uri: fast-uri: Path traversal vulnerability allows      │
+│                                          │                     │          │        │                   │                        │ bypass of security policies                                  │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-6321                    │
+│                                          ├─────────────────────┤          │        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                          │ CVE-2026-6322       │          │        │                   │ 3.1.2                  │ fast-uri normalize() decoded percent-encoded authority       │
+│                                          │                     │          │        │                   │                        │ delimiters insi ...                                          │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-6322                    │
+├──────────────────────────────────────────┼─────────────────────┤          │        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ lodash                                   │ CVE-2026-4800       │          │        │ 4.17.23           │ 4.18.0                 │ lodash: lodash: Arbitrary code execution via untrusted input │
+│                                          │                     │          │        │                   │                        │ in template imports                                          │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-4800                    │
+│                                          ├─────────────────────┼──────────┤        │                   │                        ├──────────────────────────────────────────────────────────────┤
+│                                          │ CVE-2026-2950       │ MEDIUM   │        │                   │                        │ lodash: Lodash: Prototype pollution allows deletion of       │
+│                                          │                     │          │        │                   │                        │ built-in prototype properties via array...                   │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-2950                    │
+├──────────────────────────────────────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ serialize-javascript                     │ GHSA-5c6j-r48x-rmvq │ HIGH     │        │ 6.0.2             │ 7.0.3                  │ Serialize JavaScript is Vulnerable to RCE via RegExp.flags   │
+│                                          │                     │          │        │                   │                        │ and Date.prototype.toISOString()                             │
+│                                          │                     │          │        │                   │                        │ https://github.com/advisories/GHSA-5c6j-r48x-rmvq            │
+│                                          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                          │ CVE-2026-34043      │ MEDIUM   │        │                   │ 7.0.5                  │ serialize-javascript: serialize-javascript: Denial of        │
+│                                          │                     │          │        │                   │                        │ Service via specially crafted array-like object              │
+│                                          │                     │          │        │                   │                        │ serialization                                                │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-34043                   │
+├──────────────────────────────────────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ tmp                                      │ CVE-2026-44705      │ HIGH     │        │ 0.0.33            │ 0.2.6                  │ tmp has Path Traversal via unsanitized prefix/postfix that   │
+│                                          │                     │          │        │                   │                        │ enables directory escape                                     │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-44705                   │
+│                                          ├─────────────────────┼──────────┤        │                   ├────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                          │ CVE-2025-54798      │ LOW      │        │                   │ 0.2.4                  │ tmp: tmp Symbolic Link Write Vulnerability                   │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2025-54798                   │
+├──────────────────────────────────────────┼─────────────────────┼──────────┤        ├───────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ uuid                                     │ CVE-2026-41907      │ MEDIUM   │        │ 13.0.0            │ 11.1.1, 12.0.1, 13.0.1 │ uuid: uuid: Out-of-bounds write vulnerability impacts data   │
+│                                          │                     │          │        │                   │                        │ integrity and confidentiality                                │
+│                                          │                     │          │        │                   │                        │ https://avd.aquasec.com/nvd/cve-2026-41907                   │
+│                                          │                     │          │        ├───────────────────┤                        │                                                              │
+│                                          │                     │          │        │ 3.4.0             │                        │                                                              │
+│                                          │                     │          │        │                   │                        │                                                              │
+│                                          │                     │          │        │                   │                        │                                                              │
+└──────────────────────────────────────────┴─────────────────────┴──────────┴────────┴───────────────────┴────────────────────────┴──────────────────────────────────────────────────────────────┘
